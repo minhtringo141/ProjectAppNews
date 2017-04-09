@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var test = new Schema({
-    sourceLink: {
+    itemLink: {
         type: String,
         required: true
     },
@@ -22,9 +22,6 @@ var test = new Schema({
     category: {
         type: String
     },
-    idCategory: {
-        type: Number
-    },
     subTitle: {
         type: String,
         required: true
@@ -33,7 +30,10 @@ var test = new Schema({
         type: String,
         required: true
     },
-    source: {
+    sourceName: {
+        type: String
+    },
+    sourceIconLink: {
         type: String
     },
     comments: {
