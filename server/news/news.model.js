@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var test = new Schema({
+var Item = new Schema({
     itemLink: {
         type: String,
         required: true
@@ -49,4 +49,4 @@ var test = new Schema({
     }
 });
 
-module.exports = mongoose.model('Test', test);
+module.exports = mongoose.model('Item', Item);
