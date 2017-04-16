@@ -1,0 +1,668 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title GRAPE App Landing Template by CodePassenger
+    meta(name='description', content='GRAPE App landing Page by Codepassenger')
+    meta(name='author', content='CodePassenger')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    //if IE
+      meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    link(href='assets/css/bootstrap.css', rel='stylesheet')
+    link(rel='stylesheet', href='assets/css/font-awesome.min.css')
+    link(rel='stylesheet', href='assets/css/animate.css')
+    link(rel='stylesheet', href='assets/css/owl.carousel.css')
+    link(rel='stylesheet', href='assets/css/owl.theme.css')
+    link(rel='stylesheet', href='assets/css/magnific-popup.css')
+    link(rel='stylesheet', href='assets/css/style.css')
+    link(rel='stylesheet', href='assets/css/responsive.css', media='screen')
+    link(href='http://fonts.googleapis.com/css?family=Dosis:400,600,700,800', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
+    link(rel='shortcut icon', href='assets/images/icons/favicon.ico')
+    link(rel='apple-touch-icon', href='assets/images/icons/apple-touch-icon.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='assets/images/icons/apple-touch-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='assets/images/icons/apple-touch-icon-114x114.png')
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+  body
+    #faceoff
+      #preloader
+      .preloader-section
+    header#home.navbar-fixed-top
+      nav.navbar.navbar-default(role='navigation')
+        .container
+          .row
+            .col-sm-3
+              .navbar-header
+                button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                h1
+                  a.nav-brand(href='') GRAPE
+            .col-sm-7
+              #bs-example-navbar-collapse-1.collapse.navbar-collapse.navbar-example
+                ul.nav.navbar-nav
+                  li
+                    a(href='#intro') Intro
+                  li
+                    a(href='#feature') Feature
+                  li
+                    a(href='#description') Description
+                  li
+                    a(href='#screenshot') Screenshots
+                  li
+                    a(href='#download') Download
+                  li
+                    a(href='#contact') Contact
+            .col-sm-2.mob-right
+              ul.app.pull-right
+                li
+                  a(href='')
+                    i.fa.fa-apple
+                li
+                  a(href='')
+                    i.fa.fa-android
+                li
+                  a(href='')
+                    i.fa.fa-windows
+    section#banner.banner-carousel
+      .trans-bg
+        #background-carousel
+          #myCarousel.carousel.slide(data-ride='carousel')
+            .carousel-inner
+              .item.item-no1.active
+              .item.item-no2
+              .item.item-no3
+        .content-wrapper
+          .container
+            .row
+              .col-sm-12
+                h2
+                  a.lg-logo(href='') GRAPE
+                h3.banner-title Present your beautiful app with GRAPE
+                ul.app
+                  li
+                    a(href='')
+                      i.fa.fa-apple
+                  li
+                    a(href='')
+                      i.fa.fa-android
+                  li
+                    a(href='')
+                      i.fa.fa-windows
+                .download-block.text-center
+                  a.btn-download(href='') Download
+                  a.btn-download(href='') Take a tour
+    section#intro.intro.white
+      .container
+        .row
+          .col-sm-12.text-center
+            span.sub-head.wow.fadeInLeft present your
+            .title.wow.fadeInRight
+              h2 awesome app
+        .row
+          .col-sm-4
+            .app-block.wow.bounceInUp(data-wow-delay='.1s')
+              i.fa.fa-bolt
+              h3 quick &amp; efficiency
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          .col-sm-4
+            .app-block.wow.bounceInUp(data-wow-delay='.2s')
+              i.fa.fa-life-ring
+              h3 any time support
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          .col-sm-4
+            .app-block.wow.bounceInUp(data-wow-delay='.3s')
+              i.fa.fa-paint-brush
+              h3 unique design
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        .row
+          .col-sm-4
+            .app-block.wow.bounceInUp(data-wow-delay='.4s')
+              i.fa.fa-angellist
+              h3 corporate branding
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          .col-sm-4
+            .app-block.wow.bounceInUp(data-wow-delay='.5s')
+              i.fa.fa-thumbs-o-up
+              h3 best in qulality
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          .col-sm-4
+            .app-block.wow.bounceInUp(data-wow-delay='.6s')
+              i.fa.fa-puzzle-piece
+              h3 idea making
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    section#feature.feature
+      .trans-bg
+        .container
+          .row
+            .col-sm-12.text-center
+              h2.wow.swing(data-wow-delay='.1s') crazy feature
+          .row
+            .col-sm-4
+              ul.feature-list-left
+                li
+                  .feature-detail.wow.fadeInLeft(data-wow-delay='.4s')
+                    h4 Custom scrollbars
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  .feature-icon.wow.fadeInLeft(data-wow-delay='.3s')
+                    i.fa.fa-exchange
+                li
+                  .feature-detail.wow.fadeInLeft(data-wow-delay='.4s')
+                    h4 Robust demo package
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  .feature-icon.wow.fadeInLeft(data-wow-delay='.3s')
+                    i.fa.fa-star-half-o
+                li
+                  .feature-detail.wow.fadeInLeft(data-wow-delay='.4s')
+                    h4 Responsive support
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  .feature-icon.wow.fadeInLeft(data-wow-delay='.3s')
+                    i.fa.fa-arrows-alt
+                li
+                  .feature-detail.wow.fadeInLeft(data-wow-delay='.4s')
+                    h4 Tons of API callbacks
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  .feature-icon.wow.fadeInLeft(data-wow-delay='.3s')
+                    i.fa.fa-cog
+            .col-sm-4.text-center
+              img.wow.bounceInUp(src='assets/images/iphone_full.png', alt='', title='')
+            .col-sm-4
+              ul.feature-list-right
+                li
+                  .feature-icon.wow.fadeInRight(data-wow-delay='.3s')
+                    i.fa.fa-arrows-alt
+                  .feature-detail.wow.fadeInRight(data-wow-delay='.4s')
+                    h4 Responsive support
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                li
+                  .feature-icon.wow.fadeInRight(data-wow-delay='.3s')
+                    i.fa.fa-cog
+                  .feature-detail.wow.fadeInRight(data-wow-delay='.4s')
+                    h4 Tons of API callbacks
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                li
+                  .feature-icon.wow.fadeInRight(data-wow-delay='.3s')
+                    i.fa.fa-mobile
+                  .feature-detail.wow.fadeInRight(data-wow-delay='.4s')
+                    h4 iOS / Surface / Android
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                li
+                  .feature-icon.wow.fadeInRight(data-wow-delay='.3s')
+                    i.fa.fa-undo
+                  .feature-detail.wow.fadeInRight(data-wow-delay='.4s')
+                    h4 Auto-sliding
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    section#description.description.white
+      .container
+        .row
+          .col-sm-12.text-center
+            span.sub-head.wow.fadeInLeft think about
+            .title.wow.fadeInRight
+              h2 why GRAPE best
+        .row
+          .col-sm-6.wow.pulse(data-wow-delay='.5s')
+            img.img-responsive(src='assets/images/iphone_half.png', alt='Why to choose us')
+          .col-sm-6
+            ul.description-list
+              li.wow.fadeInRight
+                span.des-icon
+                  i.fa.fa-bomb
+                | Nam nec tellus a odio tincidunt auctor a ornare odio
+              li.wow.fadeInRight
+                span.des-icon
+                  i.fa.fa-paw
+                | Nam nec tellus a odio tincidunt
+              li.wow.fadeInRight
+                span.des-icon
+                  i.fa.fa-birthday-cake
+                | Nam nec tellus a odio tincidunt auctor
+              li.wow.fadeInRight
+                span.des-icon
+                  i.fa.fa-fire-extinguisher
+                | Nam nec tellus a odio
+              li.wow.fadeInRight
+                span.des-icon
+                  i.fa.fa-magic
+                | Nam nec tellus a odio tincidunt auctor a ornare odio
+              li.wow.fadeInRight
+                span.des-icon
+                  i.fa.fa-rebel
+                | Nam nec tellus a odio tincidunt auctor a ornare
+    section#video.video
+      #trans-bg.trans-bg
+        .video-container
+          #player
+          .video-mask
+        .container
+          .row
+            .col-sm-12.text-center
+              .video-mask
+                h2.wow.bounceInDown how it works
+                a.play.wow.rollIn.animated(href='https://vimeo.com/45830194')
+                |  
+                span.wow.bounceInUp watch video
+    section#screenshot.screenshot.white
+      .container
+        .row
+          .col-sm-12
+            span.sub-head.wow.fadeInLeft take a look
+            .title.wow.fadeInRight
+              h2 screenshots
+            #owl-demo.owl-carousel
+              .item.screenshot-block
+                img(src='./assets/images/screenshot.jpg', alt='GRAPE')
+                .caption
+                  a.test-popup-link(href='./assets/images/screenshot.jpg')
+                    i.fa.fa-plus
+              .item.screenshot-block
+                img(src='./assets/images/screenshot.jpg', alt='GRAPE')
+                .caption
+                  a.test-popup-link(href='./assets/images/screenshot.jpg')
+                    i.fa.fa-plus
+              .item.screenshot-block
+                img(src='./assets/images/screenshot.jpg', alt='GRAPE')
+                .caption
+                  a.test-popup-link(href='./assets/images/screenshot.jpg')
+                    i.fa.fa-plus
+              .item.screenshot-block
+                img(src='./assets/images/screenshot.jpg', alt='GRAPE')
+                .caption
+                  a.test-popup-link(href='./assets/images/screenshot.jpg')
+                    i.fa.fa-plus
+              .item.screenshot-block
+                img(src='./assets/images/screenshot.jpg', alt='GRAPE')
+                .caption
+                  a.test-popup-link(href='./assets/images/screenshot.jpg')
+                    i.fa.fa-plus
+              .item.screenshot-block
+                img(src='./assets/images/screenshot.jpg', alt='GRAPE')
+                .caption
+                  a.test-popup-link(href='./assets/images/screenshot.jpg')
+                    i.fa.fa-plus
+    section#review.review
+      .trans-bg
+        .container
+          .row
+            .col-sm-12.text-center
+              h2.wow.swing reviews
+          .row
+            .col-sm-12.text-center
+              #myCarousel1.carousel.slide(data-ride='carousel')
+                .carousel-inner
+                  .active.item
+                    span.review-img
+                      img(src='./assets/images/thumb-1.png', alt='image')
+                    p
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    |  
+                    span.reviewer-name Maria Jones
+                    |  
+                    span.review-comp CEO, GRAPE Ltd.
+                  .item
+                    span.review-img
+                      img(src='./assets/images/thumb-1.png', alt='image')
+                    p
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    |  
+                    span.reviewer-name Maria Jones
+                    |  
+                    span.review-comp CEO, GRAPE Ltd.
+                  .item
+                    span.review-img
+                      img(src='./assets/images/thumb-1.png', alt='image')
+                    p
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    |  
+                    span.reviewer-name Maria Jones
+                    |  
+                    span.review-comp CEO, GRAPE Ltd.
+                a.carousel-control.left(href='#myCarousel1', data-slide='prev')
+                  i.fa.fa-angle-left
+                a.carousel-control.right(href='#myCarousel1', data-slide='next')
+                  i.fa.fa-angle-right
+    section#price.pricingtable-section.white
+      .container
+        .row
+          .col-sm-12.text-center
+            span.sub-head.wow.fadeInLeft are you surrprised
+            .title.wow.fadeInRight
+              h2 unbelievable price
+        .row
+          .col-sm-4.wow.bounceInUp(data-wow-duration='1s')
+            .price-block
+              .price-header
+                h3 free plan
+                i.fa.fa-heart
+              .price-plan
+                ul
+                  li
+                    span.price $0.00
+                    |  
+                    span.month /per month
+                  li Unlimited Space
+                  li Unlimited Database
+                  li Easy to Istall
+                  li Unlimited Subdomains
+                  li Dedicated Serer
+                  li
+                    a.btn(href='') sign up
+          .col-sm-4.wow.bounceInUp(data-wow-duration='2s')
+            .price-block.active
+              .price-header
+                h3 basic plan
+                i.fa.fa-cogs
+              .price-plan
+                ul
+                  li
+                    span.price $9.00
+                    |  
+                    span.month /per month
+                  li Unlimited Space
+                  li Unlimited Database
+                  li Easy to Istall
+                  li Unlimited Subdomains
+                  li Dedicated Serer
+                  li
+                    a.btn(href='') sign up
+          .col-sm-4.wow.bounceInUp(data-wow-duration='3s')
+            .price-block
+              .price-header
+                h3 developer plan
+                i.fa.fa-suitcase
+              .price-plan
+                ul
+                  li
+                    span.price $29.00
+                    |  
+                    span.month /per month
+                  li Unlimited Space
+                  li Unlimited Database
+                  li Easy to Istall
+                  li Unlimited Subdomains
+                  li Dedicated Serer
+                  li
+                    a.btn(href='') sign up
+    section#download.downlaod
+      .trans-bg
+        .container
+          .row
+            .col-sm-12.text-center
+              h2.wow.swing download
+              p Lorem ipsum dolor sit amet lorem ipsum dolor sit amet
+              span.wow.fadeInLeft(style='display:inline-block')
+                a.btn(href='')
+                  i.fa.fa-apple
+                  |  app store
+              span.wow.fadeInLeft(style='display:inline-block')
+                a.btn(href='')
+                  i.fa.fa-android
+                  |  play store
+              span.wow.fadeInLeft(style='display:inline-block')
+                a.btn(href='')
+                  i.fa.fa-windows
+                  |  windows
+    section#support.support.white
+      .container
+        .row
+          .col-sm-12.text-center
+            span.sub-head.wow.fadeInLeft stay close
+            .title.wow.fadeInRight
+              h2 help &amp; support
+        .row
+          .col-sm-4.wow.bounceInUp(data-wow-duration='1s')
+            .support-block
+              span.support-icon
+                i.fa.fa-bitbucket
+              h3 Product Support
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          .col-sm-4.wow.bounceInUp(data-wow-duration='2s')
+            .support-block.active
+              span.support-icon
+                i.fa.fa-bullhorn
+              h3 Product Support
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          .col-sm-4.wow.bounceInUp(data-wow-duration='3s')
+            .support-block
+              span.support-icon
+                i.fa.fa-stethoscope
+              h3 Product Support
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    section#subscription.subscription
+      .trans-bg
+        .container
+          .row
+            .col-sm-6.col-sm-offset-3.text-center
+              h2.wow.swing newsletter sign up
+              form.newsletter-signup
+                p.newsletter-success
+                p.newsletter-error
+                .input-group
+                  input.form-control.wow.fadeInLeft(type='email', name='email', placeholder='Enter Your Email Address')
+                  |  
+                  span.input-group-btn.wow.fadeInRight
+                    input.btn.btn-sub(type='submit', value='subscribe')
+    section#contact.contact.white.tab-content
+      .container
+        .row
+          .col-sm-12
+            ul.nav.nav-tabs.text-center(role='tablist')
+              li.wow.rollIn.animated(data-wow-duration='1s')
+                a(href='#contact-info', role='tab', data-toggle='tab')
+                  i.fa.fa-paper-plane
+              li.active.wow.rollIn.animated(data-wow-duration='2s')
+                a(href='#contact-form', role='tab', data-toggle='tab')
+                  i.fa.fa-envelope
+              li.wow.rollIn.animated(data-wow-duration='3s')
+                a.contact-map(href='#contact-map', role='tab', data-toggle='tab')
+                  i.fa.fa-map-marker
+      .tab-content
+        #contact-info.tab-pane.contact-info
+          .container
+            .row
+              .col-sm-12.text-center
+                span.sub-head we are here
+                .title
+                  h2 get in touch
+            .row.text-center
+              .col-sm-4
+                .info-holder
+                  i.fa.fa-taxi
+                  br
+                  p
+                    | 14/4
+                    br
+                    |  Burnaby
+                    br
+                    |  BC, Canada
+              .col-sm-4
+                .info-holder
+                  i.fa.fa-mobile
+                  br
+                  p
+                    | +1778-885-0000
+                    br
+                    |  +1778-885-1111
+                    br
+                    |  +6698 55514 68
+              .col-sm-4
+                .info-holder
+                  i.fa.fa-reply
+                  br
+                  p
+                    | info@domain.com
+                    br
+                    |  hello@gmail.com
+        #contact-form.tab-pane.active.contact-info
+          .container
+            .row
+              .col-sm-12.text-center
+                span.sub-head we are here
+                .title
+                  h2 get in touch
+            .row
+              .col-sm-12
+                form.form-horizontal(role='form')
+                  .col-sm-6
+                    .form-group
+                      .span-form
+                        input.form-control(type='text', placeholder='First name', required='required')
+                      .span-form
+                        input.form-control(type='text', placeholder='Last name', required='required')
+                    .form-group
+                      input.form-control(type='email', placeholder='Email address', required='required')
+                    .form-group
+                      input.form-control(type='text', placeholder='Subject', required='required')
+                  .col-sm-6
+                    .form-group
+                      textarea.form-control.btn-block(name='', rows='3')
+                    .form-group
+                      input.btn.btn-block(type='submit', value='send message')
+                  .col-sm-12
+                    p.contact-success Your Message has been Successfully Sent!
+                    p.contact-error Error! Something went wrong!
+        #contact-map.tab-pane.contact-info
+          .container
+            .row
+              .col-sm-12.text-center
+                span.sub-head we are here
+                .title
+                  h2 get in touch
+          #map
+    footer#footer
+      .trans-bg
+        .container
+          .row
+            .col-sm-12.text-center
+              .social-icon
+                a.wow.rollIn.animated(href='', data-wow-delay='.1s')
+                  i.fa.fa-facebook
+                a.wow.rollIn.animated(href='', data-wow-delay='.2s')
+                  i.fa.fa-twitter
+                a.wow.rollIn.animated(href='', data-wow-delay='.3s')
+                  i.fa.fa-google-plus
+                a.wow.rollIn.animated(href='', data-wow-delay='.4s')
+                  i.fa.fa-pinterest
+                a.wow.rollIn.animated(href='', data-wow-delay='.5s')
+                  i.fa.fa-rss
+                a.wow.rollIn.animated(href='', data-wow-delay='.6s')
+                  i.fa.fa-linkedin
+                a.wow.rollIn.animated(href='', data-wow-delay='.7s')
+                  i.fa.fa-vimeo-square
+                a.wow.rollIn.animated(href='', data-wow-delay='.8s')
+                  i.fa.fa-youtube-square
+                a.wow.rollIn.animated(href='', data-wow-delay='.9s')
+                  i.fa.fa-dribbble
+              .copyright
+                p
+                  | &copy; 
+                  span GRAPE
+                  | 2015, all right reserved
+                p
+                  | design by 
+                  span CodePassenger
+        #go-to-top
+          a(href='#banner')
+    script(src='assets/js/jquery.min.js')
+    script(src='assets/js/bootstrap.min.js')
+    script(src='assets/js/smoothscroll.js')
+    script(src='assets/js/jquery.scrollTo.min.js')
+    script(src='assets/js/jquery.localScroll.min.js')
+    script(src='assets/js/jquery.nav.js')
+    script(src='assets/js/owl.carousel.js')
+    script(src='assets/js/jquery.magnific-popup.js')
+    script(src='assets/js/jquery.flexslider-min.js')
+    script(src='assets/js/jquery.parallax.js')
+    script(src='assets/js/jquery.ajaxchimp.min.js')
+    script(src='assets/js/matchMedia.js')
+    script(src='assets/js/script.js')
+    script(src='https://maps.googleapis.com/maps/api/js?v=3.exp')
+    script(src='assets/js/wow.js')
+    script(src='assets/js/easing.js')
+    script.
+      $(document).ready(function() {
+      //"use strict";
+      $('#feature').parallax("50%", 0.5, true);
+      $('#video').parallax("50%", 0.5, true);
+      $('#subscription').parallax("50%", 0.5, true);
+      $('#review').parallax("50%", 0.5, true);
+      $('#download').parallax("50%", 0.5, true);
+      $('#footer').parallax("50%", 0.5, true);
+      });
+    script.
+      // --------Google map---------------
+      var map;
+      function initialize() {
+      // Create an array of styles.
+      var styles = [
+      {
+      stylers: [
+      { hue: "#0AABE1" },
+      { saturation: 0 }
+      ]
+      },
+      {
+      featureType: 'water',
+      stylers: [
+      { visibility: "on" },
+      { color: "#9a9efd" },
+      { weight: 2.2 },
+      { gamma: 2.54 }
+      ]
+      },
+      {
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+      ]
+      },{
+      featureType: "road",
+      elementType: "labels",
+      stylers: [
+      { visibility: "off" }
+      ]
+      }
+      ];
+      // Create a new StyledMapType object, passing it the array of styles,
+      // as well as the name to be displayed on the map type control.
+      var styledMap = new google.maps.StyledMapType(styles,
+      {name: "Styled Map"});
+      // Create a map object, and include the MapTypeId to add
+      // to the map type control.
+      var losAngeles = new google.maps.LatLng(33.8030716,-118.0725641);
+      var mapOptions = {
+      zoom: 13,
+      center: losAngeles,
+      mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+      },
+      scrollwheel: false,
+      };
+      var map = new google.maps.Map(document.getElementById('map'),
+      mapOptions);
+      //Associate the styled map with the MapTypeId and set it to display.
+      map.mapTypes.set('map_style', styledMap);
+      map.setMapTypeId('map_style');
+      // To add the marker to the map, use the 'map' property
+      var image = 'assets/images/map_icon_3.png';
+      var marker = new google.maps.Marker({
+      position: losAngeles,
+      map: map,
+      title:"GRAPE App Store!",
+      icon: image
+      });
+      }

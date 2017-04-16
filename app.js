@@ -24,14 +24,23 @@ var cb = function() {
 
 var app = express();
 var server = http.createServer(app);
+app.set('views', path.join(__dirname, 'public'));
+app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', function(req, res) {
+    res.render('index');
+})
+
 app.use('/api', require('./api/items'));
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
+
+
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'));
 module.exports = app;
