@@ -49,4 +49,4 @@ var Item = new Schema({
     }
 });
 
-module.exports = mongoose.model('Item', Item);
+module.exports = mongoose.model('Item', Item, 'item');
