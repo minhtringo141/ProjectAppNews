@@ -14,7 +14,10 @@ var itemsHot = new Schema({
     },
     createdTime: { type: Date, default: Date.now },
     imagesLinkList: [String],
-    content: [String],
+    content: {
+        type: [String],
+        required: true
+    },
     videosLinkList: [String],
     category: {
         type: String

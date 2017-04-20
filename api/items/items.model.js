@@ -15,7 +15,7 @@ var Item = new Schema({
     createdTime: { type: Date, default: Date.now },
     imagesLinkList: [String],
     content: {
-        type: String,
+        type: [String],
         required: true
     },
     videosLinkList: [String],
@@ -46,6 +46,10 @@ var Item = new Schema({
         content: {
             type: String
         }
+    },
+    isHot: {
+        type: Number,
+        required: true
     }
 });
 
