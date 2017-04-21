@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var itemsHot = new Schema({
+var itemByRegion = new Schema({
     itemLink: {
         type: String,
         required: true
@@ -46,7 +46,11 @@ var itemsHot = new Schema({
         content: {
             type: String
         }
+    },
+    region: {
+        type: String,
+        required: true
     }
 });
 
-module.exports = mongoose.model('itemsHot', itemsHot, 'itemsHot');
+module.exports = mongoose.model('itemByRegion', itemByRegion, 'itemByRegion');

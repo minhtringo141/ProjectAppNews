@@ -17,6 +17,14 @@ var config = {
         { 'name': 'CONG_DONG', 'url': 'http://vnexpress.net/tin-tuc/cong-dong' },
         { 'name': 'TAM_SU', 'url': 'http://vnexpress.net/tin-tuc/tam-su' },
     ],
+    'BAO24H': [{
+            'name': 'HA_NOI',
+            'url': 'http://www.24h.com.vn/tin-ha-noi-c414.html'
+        },
+        { 'name': 'TP_HCM', 'url': 'http://www.24h.com.vn/tin-tp-ho-chi-minh-c412.html' },
+        { 'name': 'DA_NANG', 'url': 'http://www.24h.com.vn/tin-da-nang-c498.html' },
+        { 'name': 'CAN_THO', 'url': 'http://www.24h.com.vn/tin-can-tho-c497.html' }
+    ],
 }
 
 module.exports = config;

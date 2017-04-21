@@ -14,8 +14,8 @@ db.on('error', console.error.bind(console, 'DB connection error: '));
 db.once('open', function() {
     console.log('DB connection success! ');
 });
-var Item = require('./api/items/items.model');
-var ItemsHot = require('./api/items/itemsHot.model');
+var Item = require('./api/items/item.model');
+var ItemByRegion = require('./api/items/itemByRegion.model');
 // ====================================================================
 var cb = function() {
     console.log("DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
@@ -121,7 +121,7 @@ module.exports = app;
 //             nextAsync();
 //         });
 //     });
-// }, 3600000);
+// }, 3000);
 
 
 // VNEXPRESS HOT NEWS BY CATEGORY
@@ -195,7 +195,7 @@ module.exports = app;
 //             nextAsync();
 //         });
 //     });
-// }, 3600000);
+// }, 3000);
 
 // request('http://news.zing.vn/thoi-su.html', { timeout: 1500 }, (err, response, body) => {
 //     if (!err && response.statusCode == 200) {
@@ -278,20 +278,71 @@ module.exports = app;
 //             console.log('Request error : ', err);
 //         }
 //     });
-// }, 3600000);
+// }, 3000);
 
 
+async.eachSeries(config.BAO24H, (itemCategory, nextAsync, cb) => {
+    request(itemCategory.url, { timeout: 3000 }, (err, response, body) => {
+        if (!err && response.statusCode == 200) {
+            let $ = cheerio.load(body);
+            var listItemLink = $('.boxDoi-sub-Item-trangtrong').toArray();
+            listItemLink = listItemLink.slice(0, listItemLink.length - 4);
+            async.eachSeries(listItemLink, (value, next) => {
+                var itemLink = "http://www.24h.com.vn" + value.children[1].children[0].attribs.href;
+                var imagesLinkList = new Array(value.children[1].children[0].children[0].attribs.src);
+                var title = value.children[1].children[0].attribs.title;
+                if (itemLink == undefined || title == undefined) {
+                    next();
+                } else {
+                    request(itemLink, { timeout: 3000 }, (err, response, body) => {
+                        if (err || !body) {
+                            next();
+                        } else {
+                            let $ = cheerio.load(body);
+                            var title = $('.baiviet-title').text();
+                            var subTitle = $('.baiviet-sapo').text().replace(/\t/g, '').replace(/\r\n/g, '');
+                            var content = $('.text-conent > p').text();
+                            var uploadedTime = $('.baiviet-ngay').text();
+                            $('.news-image').each(function() {
+                                imagesLinkList.push(this.attribs.src);
+                            });
 
-request('http://www.24h.com.vn/tin-ha-noi-c414.html', { timeout: 3000 }, (err, response, body) => {
-    if (!err && response.statusCode == 200) {
-        let $ = cheerio.load(body);
-        var listItemLink = $('.boxDoi-sub-Item-trangtrong').toArray();
-        listItemLink.slice(0, listItemLink.length - 4);
-        async.eachSeries(listItemLink, (value, next) => {
-            var itemLink = "http://www.24h.com.vn" + value.children[1].children[0].attribs.href;
-            var title = value.children[1].children[0].attribs.title;
-            console.log(itemLink, title);
-            next();
-        });
-    }
-})
+                            ItemByRegion.findOne({ itemLink: itemLink }).exec(function(err, data) {
+                                if (data) {
+                                    console.log("Already in database !!!");
+                                    next();
+                                } else {
+                                    var newNews = {
+                                        itemLink: itemLink,
+                                        imagesLinkList: imagesLinkList,
+                                        content: content,
+                                        title: title,
+                                        subTitle: subTitle,
+                                        uploadedTime: uploadedTime,
+                                        sourceName: '24H',
+                                        sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
+                                        category: "NEWSBYREGION",
+                                        isHot: 3,
+                                        region: itemCategory.name
+                                    }
+                                    ItemByRegion.create(newNews, function(err, data) {
+                                        if (err) {
+                                            console.log("ERROR push into db !", err);
+                                            next();
+                                        } else {
+                                            console.log("Insert to database successfully !!!");
+                                            next();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        } else {
+            console.log('Request error : ', err);
+        }
+        nextAsync();
+    });
+});
