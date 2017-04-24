@@ -13,12 +13,18 @@ var Item = new Schema({
         required: true
     },
     createdTime: { type: Date, default: Date.now },
-    imagesLinkList: [String],
+    imagesLinkList: [{
+        image: String,
+        subTitleImage: String
+    }],
     content: {
         type: [String],
         required: true
     },
-    videosLinkList: [String],
+    videosLinkList: [{
+        image: String,
+        subTitleImage: String
+    }],
     category: {
         type: String
     },
@@ -50,7 +56,20 @@ var Item = new Schema({
     isHot: {
         type: Number,
         required: true
-    }
+    },
+    relatedItemArray: [{
+        itemLink: String,
+        relatedItemImageLink: [{
+            image: String,
+            subTitleImage: String
+        }],
+        content: [String],
+        title: String,
+        subTitle: String,
+        uploadedTime: String,
+        sourceName: String,
+        sourceIconLink: String
+    }]
 });
 
 module.exports = mongoose.model('Item', Item, 'item');
