@@ -120,8 +120,8 @@ setInterval(() => {
                                                     var relatedUploadedTime = $(".block_timer_share .block_timer").text();
                                                     relatedItemArray.push({
                                                         itemLink: relatedItemLink,
-                                                        relatedItemImageLink: relatedItemImageLink,
-                                                        content: relatedItemContent,
+                                                        imagesLinkList: relatedItemImageLink,
+                                                        content: relatedItemContent.shift(),
                                                         title: relatedItemTitle,
                                                         subTitle: relatedSubTitle,
                                                         uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -147,7 +147,7 @@ setInterval(() => {
                                                 var newNews = {
                                                     itemLink: itemLink,
                                                     imagesLinkList: imagesLinkList,
-                                                    content: content,
+                                                    content: content.shift(),
                                                     title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                     subTitle: subTitle,
                                                     uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -184,7 +184,7 @@ setInterval(() => {
             }
         });
     });
-}, 300000);
+}, 120000);
 
 
 // VNEXPRESS HOT NEWS BY CATEGORY
@@ -253,8 +253,8 @@ setInterval(() => {
                                                     var relatedUploadedTime = $(".block_timer_share .block_timer").text();
                                                     relatedItemArray.push({
                                                         itemLink: relatedItemLink,
-                                                        relatedItemImageLink: relatedItemImageLink,
-                                                        content: relatedItemContent,
+                                                        imagesLinkList: relatedItemImageLink,
+                                                        content: relatedItemContent.shift(),
                                                         title: relatedItemTitle,
                                                         subTitle: relatedSubTitle,
                                                         uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -280,7 +280,7 @@ setInterval(() => {
                                                 var newNews = {
                                                     itemLink: itemLink,
                                                     imagesLinkList: imagesLinkList,
-                                                    content: content,
+                                                    content: content.shift(),
                                                     title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                     subTitle: subTitle,
                                                     uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -319,7 +319,7 @@ setInterval(() => {
 
         });
     });
-}, 300000);
+}, 120000);
 
 // // request('http://news.zing.vn/thoi-su.html', { timeout: 1500 }, (err, response, body) => {
 // //     if (!err && response.statusCode == 200) {
@@ -398,8 +398,8 @@ setInterval(() => {
                                                 var relatedUploadedTime = $(".block_timer_share .block_timer").text();
                                                 relatedItemArray.push({
                                                     itemLink: relatedItemLink,
-                                                    relatedItemImageLink: relatedItemImageLink,
-                                                    content: relatedItemContent,
+                                                    imagesLinkList: relatedItemImageLink,
+                                                    content: relatedItemContent.shift(),
                                                     title: relatedItemTitle,
                                                     subTitle: relatedSubTitle,
                                                     uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -424,7 +424,7 @@ setInterval(() => {
                                             var newNews = {
                                                 itemLink: itemLink,
                                                 imagesLinkList: imagesLinkList,
-                                                content: content,
+                                                content: content.shift(),
                                                 title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                 subTitle: subTitle,
                                                 uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -459,7 +459,7 @@ setInterval(() => {
             console.log('Request error : ', err);
         }
     });
-}, 300000);
+}, 120000);
 
 setInterval(() => {
     async.eachSeries(config.BAO24H, (itemCategory, nextAsync, cb) => {
@@ -521,7 +521,7 @@ setInterval(() => {
                                                 var relatedSubTitle = $('.baiviet-sapo').text().replace(/\t/g, '').replace(/\r\n/g, '');
                                                 relatedItemArray.push({
                                                     itemLink: relatedItemLink,
-                                                    relatedItemImageLink: relatedItemImageLink,
+                                                    imagesLinkList: relatedItemImageLink,
                                                     content: relatedItemContent,
                                                     title: relatedItemTitle,
                                                     subTitle: relatedSubTitle,
@@ -587,4 +587,4 @@ setInterval(() => {
 
         });
     });
-}, 300000);
+}, 120000);

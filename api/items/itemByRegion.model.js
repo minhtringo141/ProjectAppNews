@@ -55,7 +55,7 @@ var itemByRegion = new Schema({
     },
     relatedItemArray: [{
         itemLink: String,
-        relatedItemImageLink: [{
+        imagesLinkList: [{
             image: String,
             subTitleImage: String
         }],
