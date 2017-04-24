@@ -13,12 +13,14 @@ var itemByRegion = new Schema({
         required: true
     },
     createdTime: { type: Date, default: Date.now },
-    imagesLinkList: [String],
+    imagesLinkList: [{
+        image: String,
+        subTitleImage: String
+    }],
     content: {
         type: [String],
         required: true
     },
-    videosLinkList: [String],
     category: {
         type: String
     },
@@ -50,7 +52,20 @@ var itemByRegion = new Schema({
     region: {
         type: String,
         required: true
-    }
+    },
+    relatedItemArray: [{
+        itemLink: String,
+        relatedItemImageLink: [{
+            image: String,
+            subTitleImage: String
+        }],
+        content: [String],
+        title: String,
+        subTitle: String,
+        uploadedTime: String,
+        sourceName: String,
+        sourceIconLink: String
+    }]
 });
 
 module.exports = mongoose.model('itemByRegion', itemByRegion, 'itemByRegion');

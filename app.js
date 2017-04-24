@@ -406,6 +406,7 @@ request('http://vnexpress.net', { timeout: 3000 }, (err, response, body) => {
                                                 sourceName: 'VNEXPRESS',
                                                 sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
                                             });
+                                            console.log(relatedItemArray);
                                             nextRelate();
                                         }
                                     });
@@ -415,7 +416,6 @@ request('http://vnexpress.net', { timeout: 3000 }, (err, response, body) => {
                             }
                         }, function(err) {
                             if (!err && relatedItemArray.length > 0) {
-                                console.log(relatedItemArray, '++++++++++++++++++++++++++++++++++++++')
                                 Item.findOne({ itemLink: itemLink, isHot: 2 }).exec(function(err, data) {
                                     if (data) {
                                         console.log("Already in database !!!");
@@ -468,17 +468,17 @@ async.eachSeries(config.BAO24H, (itemCategory, nextAsync, cb) => {
             let $ = cheerio.load(body);
             var listItemLink = $('.boxDoi-sub-Item-trangtrong').toArray();
             listItemLink = listItemLink.slice(0, listItemLink.length - 4);
-            async.eachSeries(listItemLink, (value, next) => {
+            async.eachSeries(listItemLink, (value, nextX) => {
                 var itemLink = "http://www.24h.com.vn" + value.children[1].children[0].attribs.href;
-                var imagesLinkList = new Array(value.children[1].children[0].children[0].attribs.src);
+                var imagesLinkList = new Array({ image: value.children[1].children[0].children[0].attribs.src, subTitleImage: value.children[1].children[0].children[0].attribs.alt });
                 var title = value.children[1].children[0].attribs.title;
                 var content = new Array();
                 if (itemLink == undefined || title == undefined) {
-                    next();
+                    nextX();
                 } else {
                     request(itemLink, { timeout: 3000 }, (err, response, body) => {
                         if (err || !body) {
-                            next();
+                            nextX();
                         } else {
                             let $ = cheerio.load(body);
                             var title = $('.baiviet-title').text();
@@ -492,46 +492,99 @@ async.eachSeries(config.BAO24H, (itemCategory, nextAsync, cb) => {
                             });
                             var uploadedTime = $('.baiviet-ngay').text();
                             $('.news-image').each(function() {
-                                imagesLinkList.push(this.attribs.src);
+                                imagesLinkList.push({ image: this.attribs.src, subTitleImage: this.attribs.alt });
                             });
+                            var relatedItemArray = new Array();
+                            async.each($('.baiviet-bailienquan .bailienquan-trangtrong span:first-child'), (value, nextRelate) => {
+                                if (value.children[0].attribs.title != undefined) {
+                                    var relatedItemTitle = value.children[0].attribs.title;
+                                    var relatedItemLink = value.children[0].attribs.href;
+                                    var relatedItemImageLink = new Array({ image: value.children[0].children[1].src, subTitleImage: value.children[0].children[1].alt });
+                                    var relatedItemContent = new Array();
+                                    request(relatedItemLink, { timeout: 3000 }, (err, response, body) => {
 
-                            ItemByRegion.findOne({ itemLink: itemLink }).exec(function(err, data) {
-                                if (data) {
-                                    console.log("Already in database !!!");
-                                    next();
-                                } else {
-                                    var newNews = {
-                                        itemLink: itemLink,
-                                        imagesLinkList: imagesLinkList,
-                                        content: content,
-                                        title: title,
-                                        subTitle: subTitle,
-                                        uploadedTime: uploadedTime,
-                                        sourceName: '24H',
-                                        sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
-                                        category: "NEWSBYREGION",
-                                        isHot: 3,
-                                        region: itemCategory.name
-                                    }
-                                    ItemByRegion.create(newNews, function(err, data) {
-                                        if (err) {
-                                            console.log("ERROR push into db !", err);
-                                            next();
+                                        if (err || !body) {
+                                            nextRelate();
                                         } else {
-                                            console.log("Insert to database successfully !!!");
-                                            next();
+                                            let $ = cheerio.load(body);
+                                            $('.text-conent>p').each(function() {
+                                                if (this.children.length > 0) {
+                                                    if (this.children[0].type == 'text' && _.isEmpty(this.children[0].parent.attribs)) {
+                                                        relatedItemContent.push(this.children[0].data);
+                                                    }
+                                                }
+                                            });
+                                            var relatedUploadedTime = $('.baiviet-ngay').text();
+                                            $('.news-image').each(function() {
+                                                relatedItemImageLink.push({ image: this.attribs.src, subTitleImage: this.attribs.alt });
+                                            });
+                                            var relatedSubTitle = $('.baiviet-sapo').text().replace(/\t/g, '').replace(/\r\n/g, '');
+                                            relatedItemArray.push({
+                                                itemLink: relatedItemLink,
+                                                relatedItemImageLink: relatedItemImageLink,
+                                                content: relatedItemContent,
+                                                title: relatedItemTitle,
+                                                subTitle: relatedSubTitle,
+                                                uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
+                                                sourceName: '24H',
+                                                sourceIconLink: 'http://cdn.marketplaceimages.windowsphone.com/v8/images/d2f1875a-bc7e-462f-97ed-1def619bb70b?imageType=ws_icon_medium',
+                                                category: "NEWSBYREGION",
+                                                isHot: 3,
+                                                region: itemCategory.name
+                                            });
+                                            nextRelate();
                                         }
                                     });
+                                } else {
+                                    nextRelate();
+                                }
+                            }, function(err) {
+                                if (!err && relatedItemArray.length > 0) {
+                                    ItemByRegion.findOne({ itemLink: itemLink }).exec(function(err, data) {
+                                        if (data) {
+                                            console.log("Already in database !!!");
+                                            nextX();
+                                        } else {
+                                            var newNews = {
+                                                itemLink: itemLink,
+                                                imagesLinkList: imagesLinkList,
+                                                content: content,
+                                                title: title,
+                                                subTitle: subTitle,
+                                                uploadedTime: uploadedTime,
+                                                sourceName: '24H',
+                                                sourceIconLink: 'http://cdn.marketplaceimages.windowsphone.com/v8/images/d2f1875a-bc7e-462f-97ed-1def619bb70b?imageType=ws_icon_medium',
+                                                category: "NEWSBYREGION",
+                                                isHot: 3,
+                                                region: itemCategory.name,
+                                                relatedItemArray: relatedItemArray
+                                            }
+                                            ItemByRegion.create(newNews, function(err, data) {
+                                                if (err) {
+                                                    console.log("ERROR push into db !", err);
+                                                    nextX();
+                                                } else {
+                                                    console.log("Insert to database successfully !!!");
+                                                    nextX();
+                                                }
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    console.log("Error request child");
+                                    nextX();
                                 }
                             });
                         }
                     });
                 }
             });
+            nextAsync();
         } else {
             console.log('Request error : ', err);
+            nextAsync();
         }
-        nextAsync();
+
     });
 });
 // }, 3000000);

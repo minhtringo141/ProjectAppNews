@@ -21,10 +21,6 @@ var Item = new Schema({
         type: [String],
         required: true
     },
-    videosLinkList: [{
-        image: String,
-        subTitleImage: String
-    }],
     category: {
         type: String
     },
