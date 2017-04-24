@@ -118,10 +118,11 @@ setInterval(() => {
                                                     });
                                                     var relatedSubTitle = $(".short_intro").text();
                                                     var relatedUploadedTime = $(".block_timer_share .block_timer").text();
+                                                    relatedItemContent.shift();
                                                     relatedItemArray.push({
                                                         itemLink: relatedItemLink,
                                                         imagesLinkList: relatedItemImageLink,
-                                                        content: relatedItemContent.shift(),
+                                                        content: relatedItemContent,
                                                         title: relatedItemTitle,
                                                         subTitle: relatedSubTitle,
                                                         uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -144,10 +145,11 @@ setInterval(() => {
                                                 console.log("Already in database !!!");
                                                 nextX();
                                             } else {
+                                                content.shift();
                                                 var newNews = {
                                                     itemLink: itemLink,
                                                     imagesLinkList: imagesLinkList,
-                                                    content: content.shift(),
+                                                    content: content,
                                                     title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                     subTitle: subTitle,
                                                     uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -251,10 +253,11 @@ setInterval(() => {
                                                     });
                                                     var relatedSubTitle = $(".short_intro").text();
                                                     var relatedUploadedTime = $(".block_timer_share .block_timer").text();
+                                                    relatedItemContent.shift();
                                                     relatedItemArray.push({
                                                         itemLink: relatedItemLink,
                                                         imagesLinkList: relatedItemImageLink,
-                                                        content: relatedItemContent.shift(),
+                                                        content: relatedItemContent,
                                                         title: relatedItemTitle,
                                                         subTitle: relatedSubTitle,
                                                         uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -277,10 +280,11 @@ setInterval(() => {
                                                 console.log("Already in database !!!");
                                                 nextX();
                                             } else {
+                                                content.shift();
                                                 var newNews = {
                                                     itemLink: itemLink,
                                                     imagesLinkList: imagesLinkList,
-                                                    content: content.shift(),
+                                                    content: content,
                                                     title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                     subTitle: subTitle,
                                                     uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -396,10 +400,11 @@ setInterval(() => {
                                                 });
                                                 var relatedSubTitle = $(".short_intro").text();
                                                 var relatedUploadedTime = $(".block_timer_share .block_timer").text();
+                                                relatedItemContent.shift();
                                                 relatedItemArray.push({
                                                     itemLink: relatedItemLink,
                                                     imagesLinkList: relatedItemImageLink,
-                                                    content: relatedItemContent.shift(),
+                                                    content: relatedItemContent,
                                                     title: relatedItemTitle,
                                                     subTitle: relatedSubTitle,
                                                     uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
@@ -421,10 +426,11 @@ setInterval(() => {
                                             console.log("Already in database !!!");
                                             nextX();
                                         } else {
+                                            content.shift();
                                             var newNews = {
                                                 itemLink: itemLink,
                                                 imagesLinkList: imagesLinkList,
-                                                content: content.shift(),
+                                                content: content,
                                                 title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                 subTitle: subTitle,
                                                 uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, ''),
