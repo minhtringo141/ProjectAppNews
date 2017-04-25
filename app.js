@@ -67,7 +67,7 @@ setInterval(() => {
                         var imagesLinkList = new Array({ image: value.children[3].children[0].next.children[0].attribs.src, subTitleImage: "" });
                         // console.log(itemLink);
                     }
-                    if (itemLink.includes('video') || itemLink.includes('photo')) {
+                    if (itemLink.includes('video') || itemLink.includes('photo') || itemLink.includes('trac-nghiem')) {
                         console.log('Link contain video, can not crawled!');
                         nextX();
                     } else {
@@ -96,7 +96,7 @@ setInterval(() => {
                                         var relatedItemTitle = value.attribs.title;
                                         var relatedItemLink = value.attribs.href;
                                         var relatedItemImageLink = new Array({});
-                                        if (relatedItemLink.includes('video') || relatedItemLink.includes('photo')) {
+                                        if (relatedItemLink.includes('video') || relatedItemLink.includes('photo') || relatedItemLink.includes('trac-nghiem')) {
                                             console.log('Link contain video, can not crawled !');
                                             nextRelate();
                                         } else {
@@ -206,7 +206,7 @@ setInterval(() => {
                         var imagesLinkList = new Array(value.children[3].children[1].children[0].attribs.src);
                         var itemLink = value.children[3].children[1].attribs.href;
                     }
-                    if (itemLink.includes('video') || itemLink.includes('photo')) {
+                    if (itemLink.includes('video') || itemLink.includes('photo') || itemLink.includes('trac-nghiem')) {
                         console.log('Link contain video, can not crawled !');
                         nextX();
                     } else {
@@ -233,7 +233,7 @@ setInterval(() => {
                                         var relatedItemTitle = value.attribs.title;
                                         var relatedItemLink = value.attribs.href;
                                         var relatedItemImageLink = new Array({});
-                                        if (relatedItemLink.includes('video') || relatedItemLink.includes('photo')) {
+                                        if (relatedItemLink.includes('video') || relatedItemLink.includes('photo') || relatedItemLink.includes('trac-nghiem')) {
                                             console.log('Link contain video, can not crawled !');
                                             nextRelate();
                                         } else {
@@ -355,7 +355,7 @@ setInterval(() => {
             async.eachSeries(listItemLink, (value, nextX) => {
                 var imagesLinkList = new Array({});
                 var itemLink = value.children[1].children[0].attribs.href;
-                if (itemLink.includes('video') || itemLink.includes('photo')) {
+                if (itemLink.includes('video') || itemLink.includes('photo') || itemLink.includes('trac-nghiem')) {
                     console.log('Link contain video, can not crawled HOMEPAGE!');
                     nextX();
                 } else {
@@ -382,7 +382,7 @@ setInterval(() => {
                                     var relatedItemTitle = value.attribs.title;
                                     var relatedItemLink = value.attribs.href;
                                     var relatedItemImageLink = new Array({});
-                                    if (relatedItemLink.includes('video') || relatedItemLink.includes('photo')) {
+                                    if (relatedItemLink.includes('video') || relatedItemLink.includes('photo') || relatedItemLink.includes('trac-nghiem')) {
                                         console.log('Link contain video, can not crawled !');
                                         nextRelate();
                                     } else {

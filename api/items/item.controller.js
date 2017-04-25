@@ -42,19 +42,19 @@ module.exports = {
                 newsByRegion: []
             }
         };
-        Item.find({ isHot: 1, content: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
+        Item.find({ isHot: 1, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
             if (err) {
                 console.log('Error in get all from database', err);
                 res.send(err);
             }
             dataHomepage.data.hotNews = data;
-            Item.find({ isHot: 2, content: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
+            Item.find({ isHot: 2, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
                 if (err) {
                     console.log('Error in get all from database', err);
                     res.send(err);
                 }
                 dataHomepage.data.highlights = data;
-                itemByRegion.find({ content: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
+                itemByRegion.find({ content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
                     if (err) {
                         console.log('Error in get all from database', err);
                         res.send(err);
