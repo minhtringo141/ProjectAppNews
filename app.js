@@ -432,7 +432,7 @@ setInterval(() => {
                                             nextX();
                                         } else {
                                             content.shift();
-                                            // imagesLinkList.shift();
+                                            imagesLinkList.shift();
                                             var newNews = {
                                                 itemLink: itemLink,
                                                 imagesLinkList: imagesLinkList,
