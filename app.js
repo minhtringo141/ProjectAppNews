@@ -531,6 +531,7 @@ setInterval(() => {
                                                     relatedItemImageLink.push({ image: this.attribs.src, subTitleImage: this.attribs.alt });
                                                 });
                                                 var relatedSubTitle = $('.baiviet-sapo').text().replace(/\t/g, '').replace(/\r\n/g, '');
+                                                relatedItemImageLink.shift();
                                                 relatedItemArray.push({
                                                     itemLink: relatedItemLink,
                                                     imagesLinkList: relatedItemImageLink,
