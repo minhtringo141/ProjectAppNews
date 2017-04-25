@@ -9,8 +9,8 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var _ = require('lodash');
 // CONFIG DATABASE=====================================================
-// mongoose.connect('mongodb://localhost/app_news');
-mongoose.connect('mongodb://minhtringo141:minhtri@ds155130.mlab.com:55130/project_app_news');
+mongoose.connect('mongodb://localhost/app_news');
+// mongoose.connect('mongodb://minhtringo141:minhtri@ds155130.mlab.com:55130/project_app_news');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'DB connection error: '));
 db.once('open', function() {
@@ -119,6 +119,7 @@ setInterval(() => {
                                                     var relatedSubTitle = $(".short_intro").text();
                                                     var relatedUploadedTime = $(".block_timer_share .block_timer").text();
                                                     relatedItemContent.shift();
+                                                    relatedItemImageLink.shift();
                                                     relatedItemArray.push({
                                                         itemLink: relatedItemLink,
                                                         imagesLinkList: relatedItemImageLink,
@@ -146,6 +147,7 @@ setInterval(() => {
                                                 nextX();
                                             } else {
                                                 content.shift();
+                                                imagesLinkList.shift();
                                                 var newNews = {
                                                     itemLink: itemLink,
                                                     imagesLinkList: imagesLinkList,
@@ -254,6 +256,7 @@ setInterval(() => {
                                                     var relatedSubTitle = $(".short_intro").text();
                                                     var relatedUploadedTime = $(".block_timer_share .block_timer").text();
                                                     relatedItemContent.shift();
+                                                    relatedItemImageLink.shift();
                                                     relatedItemArray.push({
                                                         itemLink: relatedItemLink,
                                                         imagesLinkList: relatedItemImageLink,
@@ -281,6 +284,7 @@ setInterval(() => {
                                                 nextX();
                                             } else {
                                                 content.shift();
+                                                imagesLinkList.shift();
                                                 var newNews = {
                                                     itemLink: itemLink,
                                                     imagesLinkList: imagesLinkList,
@@ -401,6 +405,7 @@ setInterval(() => {
                                                 var relatedSubTitle = $(".short_intro").text();
                                                 var relatedUploadedTime = $(".block_timer_share .block_timer").text();
                                                 relatedItemContent.shift();
+                                                relatedItemImageLink.shift();
                                                 relatedItemArray.push({
                                                     itemLink: relatedItemLink,
                                                     imagesLinkList: relatedItemImageLink,
@@ -427,6 +432,7 @@ setInterval(() => {
                                             nextX();
                                         } else {
                                             content.shift();
+                                            imagesLinkList.shift();
                                             var newNews = {
                                                 itemLink: itemLink,
                                                 imagesLinkList: imagesLinkList,
