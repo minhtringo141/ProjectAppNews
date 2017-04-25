@@ -8,5 +8,6 @@ router.get('/findAllNews', controller.findAllNews);
 router.get('/findHotNews', controller.findHotNews);
 router.get('/findHotestNews', controller.findHotestNews);
 router.get('/homepage', controller.homepage);
-router.get('/category/:name', controller.category);
+router.get('/category/:name', controller.findByCategory);
+router.get('/city/:name', controller.findByRegion);
 module.exports = router;
