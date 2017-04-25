@@ -64,5 +64,20 @@ module.exports = {
                 });
             });
         });
+    },
+    category: function(req, res) {
+        var dataHomepage = {
+            status: 1,
+            msg: "xxxx",
+            data: []
+        };
+        Item.find({ category: req.params.name, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+            if (err) {
+                console.log('Error in get all from database', err);
+                res.send(err);
+            }
+            dataHomepage.data = dataR;
+            res.json(dataHomepage);
+        });
     }
 }
