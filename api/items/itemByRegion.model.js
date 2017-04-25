@@ -65,7 +65,8 @@ var itemByRegion = new Schema({
         uploadedTime: String,
         sourceName: String,
         sourceIconLink: String
-    }]
+    }],
+    isHot: Number
 });
 
 module.exports = mongoose.model('itemByRegion', itemByRegion, 'itemByRegion');
