@@ -126,7 +126,7 @@ setInterval(() => {
                                                         content: relatedItemContent,
                                                         title: relatedItemTitle,
                                                         subTitle: relatedSubTitle,
-                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ','),
+                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
                                                         sourceName: 'VNEXPRESS',
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
 
@@ -154,7 +154,7 @@ setInterval(() => {
                                                     content: content,
                                                     title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                     subTitle: subTitle,
-                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ','),
+                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
                                                     sourceName: 'VNEXPRESS',
                                                     sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                     category: itemCategory.name,
@@ -263,7 +263,7 @@ setInterval(() => {
                                                         content: relatedItemContent,
                                                         title: relatedItemTitle,
                                                         subTitle: relatedSubTitle,
-                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ','),
+                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
                                                         sourceName: 'VNEXPRESS',
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
 
@@ -291,7 +291,7 @@ setInterval(() => {
                                                     content: content,
                                                     title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                     subTitle: subTitle,
-                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ','),
+                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
                                                     sourceName: 'VNEXPRESS',
                                                     sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                     category: itemCategory.name,
@@ -412,7 +412,7 @@ setInterval(() => {
                                                     content: relatedItemContent,
                                                     title: relatedItemTitle,
                                                     subTitle: relatedSubTitle,
-                                                    uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ','),
+                                                    uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
                                                     sourceName: 'VNEXPRESS',
                                                     sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
                                                 });
@@ -439,7 +439,7 @@ setInterval(() => {
                                                 content: content,
                                                 title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                 subTitle: subTitle,
-                                                uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ','),
+                                                uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
                                                 sourceName: 'VNEXPRESS',
                                                 sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                 category: "HOMEPAGE",
