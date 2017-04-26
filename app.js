@@ -126,7 +126,7 @@ setInterval(() => {
                                                         content: relatedItemContent,
                                                         title: relatedItemTitle,
                                                         subTitle: relatedSubTitle,
-                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
+                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
                                                         sourceName: 'VNEXPRESS',
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
 
@@ -154,7 +154,7 @@ setInterval(() => {
                                                     content: content,
                                                     title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                     subTitle: subTitle,
-                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
+                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
                                                     sourceName: 'VNEXPRESS',
                                                     sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                     category: itemCategory.name,
@@ -263,7 +263,7 @@ setInterval(() => {
                                                         content: relatedItemContent,
                                                         title: relatedItemTitle,
                                                         subTitle: relatedSubTitle,
-                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
+                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
                                                         sourceName: 'VNEXPRESS',
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
 
@@ -291,7 +291,7 @@ setInterval(() => {
                                                     content: content,
                                                     title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                     subTitle: subTitle,
-                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
+                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
                                                     sourceName: 'VNEXPRESS',
                                                     sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                     category: itemCategory.name,
@@ -412,7 +412,7 @@ setInterval(() => {
                                                     content: relatedItemContent,
                                                     title: relatedItemTitle,
                                                     subTitle: relatedSubTitle,
-                                                    uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
+                                                    uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
                                                     sourceName: 'VNEXPRESS',
                                                     sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
                                                 });
@@ -439,7 +439,7 @@ setInterval(() => {
                                                 content: content,
                                                 title: title.replace(/  /g, '').replace(/\r\n/g, ''),
                                                 subTitle: subTitle,
-                                                uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ','),
+                                                uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
                                                 sourceName: 'VNEXPRESS',
                                                 sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                 category: "HOMEPAGE",
@@ -538,7 +538,7 @@ setInterval(() => {
                                                     content: relatedItemContent,
                                                     title: relatedItemTitle,
                                                     subTitle: relatedSubTitle,
-                                                    uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace("(GMT+7)", '').replace(" AM ", '').replace("ngày ", '').replace(" PM ", '').replace(",", '').replace(" ", ', '),
+                                                    uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace("(GMT+7)", '').replace(" AM ", '').replace("ngày ", '').replace(" PM ", ''),
                                                     sourceName: '24H',
                                                     sourceIconLink: 'http://cdn.marketplaceimages.windowsphone.com/v8/images/d2f1875a-bc7e-462f-97ed-1def619bb70b?imageType=ws_icon_medium',
                                                     category: "NEWSBYREGION",
@@ -564,7 +564,7 @@ setInterval(() => {
                                                     content: content,
                                                     title: title,
                                                     subTitle: subTitle,
-                                                    uploadedTime: uploadedTime.replace("(GMT+7)", '').replace(" AM ", '').replace("ngày ", '').replace(" PM ", '').replace(",", '').replace(" ", ', '),
+                                                    uploadedTime: uploadedTime.replace("(GMT+7)", '').replace(" AM ", '').replace("ngày ", '').replace(" PM ", ''),
                                                     sourceName: '24H',
                                                     sourceIconLink: 'http://cdn.marketplaceimages.windowsphone.com/v8/images/d2f1875a-bc7e-462f-97ed-1def619bb70b?imageType=ws_icon_medium',
                                                     category: "NEWSBYREGION",
