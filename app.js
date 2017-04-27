@@ -547,177 +547,91 @@ setInterval(() => {
                             var subTitle = $(".short_intro").text();
                             var uploadedTime = $(".block_timer_share .block_timer").text();
                             var relatedItemArray = new Array();
-                            if (itemCategory.name == 'THOI_SU' || itemCategory.name == 'THE_GIOI' || itemCategory.name == 'PHAP_LUAT' || itemCategory.name == 'GIAO_DUC' || itemCategory.name == 'SUC_KHOE' || itemCategory.name == 'DU_LICH' || itemCategory.name == 'KHOA_HOC' || itemCategory.name == 'SO_HOA' || itemCategory.name == 'CONG_DONG' || itemCategory.name == 'TAM_SU') {
-                                async.each($('.list_10tinkhac .left ul li a:first-child'), (value, nextRelate) => {
-                                    if (value.attribs.href != undefined) {
-                                        var relatedItemTitle = value.children[0].data;
-                                        var relatedItemLink = value.attribs.href
-                                        var relatedItemImageLink = new Array({});
-                                        if (relatedItemLink.includes('video') || relatedItemLink.includes('photo') || relatedItemLink.includes('trac-nghiem')) {
-                                            console.log('Link contain video, can not crawled CHILD!');
-                                            nextRelate();
+                            async.each($('.list_10tinkhac .left ul li h2 a:first-child'), (value, nextRelate) => {
+                                if (value.attribs.title != undefined) {
+                                    var relatedItemTitle = value.attribs.title;
+                                    var relatedItemLink = value.attribs.href;
+                                    var relatedItemImageLink = new Array({});
+                                    if (relatedItemLink.includes('video') || relatedItemLink.includes('photo') || relatedItemLink.includes('trac-nghiem')) {
+                                        console.log('Link contain video, can not crawled !');
+                                        nextRelate();
+                                    } else {
+                                        request(relatedItemLink, { timeout: 3000 }, (err, response, body) => {
+                                            if (err || !body) {
+                                                nextRelate();
+                                            } else {
+                                                let $ = cheerio.load(body);
+                                                var relatedItemContent = $('.fck_detail p').text().split("\n\t");
+                                                $("#left_calculator .tplCaption tbody").each(function() {
+                                                    // if (this.children[0].children[0].children[1].attribs.src != undefined && this.children[1].children[0].children[1].children[0].data != undefined) {
+                                                    //     relatedItemImageLink.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
+                                                    // }
+                                                    try {
+                                                        relatedItemImageLink.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
+                                                    } catch (err) {
+                                                        console.log(err);
+                                                    }
+                                                });
+                                                var relatedSubTitle = $(".short_intro").text();
+                                                var relatedUploadedTime = $(".block_timer_share .block_timer").text();
+                                                relatedItemContent.shift();
+                                                relatedItemImageLink.shift();
+                                                relatedItemArray.push({
+                                                    itemLink: relatedItemLink,
+                                                    imagesLinkList: relatedItemImageLink,
+                                                    content: relatedItemContent,
+                                                    title: relatedItemTitle,
+                                                    subTitle: relatedSubTitle,
+                                                    uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
+                                                    sourceName: 'VNEXPRESS',
+                                                    sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
+                                                });
+                                                nextRelate();
+                                            }
+                                        });
+                                    }
+                                } else {
+                                    nextRelate();
+                                }
+                            }, function(err) {
+                                if (!err && relatedItemArray.length > 0) {
+                                    Item.findOne({ itemLink: itemLink, isHot: 2 }).exec(function(err, data) {
+                                        if (data) {
+                                            console.log("Already in database !!!");
+                                            nextX();
                                         } else {
-                                            request(relatedItemLink, { timeout: 3000 }, (err, response, body) => {
-                                                if (err || !body) {
-                                                    nextRelate();
+                                            content.shift();
+                                            imagesLinkList.shift();
+                                            var newNews = {
+                                                itemLink: itemLink,
+                                                imagesLinkList: imagesLinkList,
+                                                content: content,
+                                                title: title.replace(/  /g, '').replace(/\r\n/g, ''),
+                                                subTitle: subTitle,
+                                                uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
+                                                sourceName: 'VNEXPRESS',
+                                                sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
+                                                category: "HOMEPAGE",
+                                                isHot: 2,
+                                                relatedItemArray: relatedItemArray
+                                            };
+                                            Item.create(newNews, function(err, data) {
+                                                if (err) {
+                                                    console.log("ERROR push into db !", err);
+                                                    nextX();
                                                 } else {
-                                                    let $ = cheerio.load(body);
-                                                    var relatedItemContent = $('.fck_detail p').text().split("\n\t");
-                                                    $("#left_calculator .tplCaption tbody").each(function() {
-                                                        // if (this.children[0].children[0].children[1].attribs.src != undefined && this.children[1].children[0].children[1].children[0].data != undefined) {
-                                                        //     relatedItemImageLink.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
-                                                        // }
-                                                        try {
-                                                            relatedItemImageLink.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
-                                                        } catch (err) {
-                                                            console.log(err);
-                                                        }
-                                                    });
-                                                    var relatedSubTitle = $(".short_intro").text();
-                                                    var relatedUploadedTime = $(".block_timer_share .block_timer").text();
-                                                    relatedItemContent.shift();
-                                                    relatedItemImageLink.shift();
-                                                    relatedItemArray.push({
-                                                        itemLink: relatedItemLink,
-                                                        imagesLinkList: relatedItemImageLink,
-                                                        content: relatedItemContent,
-                                                        title: relatedItemTitle,
-                                                        subTitle: relatedSubTitle,
-                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
-                                                        sourceName: 'VNEXPRESS',
-                                                        sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
-                                                    });
-                                                    nextRelate();
+                                                    console.log("Insert to database successfully !!!");
+                                                    nextX();
                                                 }
                                             });
                                         }
-                                    } else {
-                                        nextRelate();
-                                    }
-                                }, function(err) {
-                                    if (!err && relatedItemArray.length > 0) {
-                                        Item.findOne({ itemLink: itemLink, isHot: 0 }).exec(function(err, data) {
-                                            if (data) {
-                                                console.log("Already in database !!!");
-                                                nextX();
-                                            } else {
-                                                content.shift();
-                                                // imagesLinkList.shift();
-                                                var newNews = {
-                                                    itemLink: itemLink,
-                                                    imagesLinkList: imagesLinkList,
-                                                    content: content,
-                                                    title: title.replace(/  /g, '').replace(/\r\n/g, ''),
-                                                    subTitle: subTitle,
-                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
-                                                    sourceName: 'VNEXPRESS',
-                                                    sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
-                                                    category: itemCategory.name,
-                                                    isHot: 0,
-                                                    relatedItemArray: relatedItemArray
-                                                };
-                                                Item.create(newNews, function(err, data) {
-                                                    if (err) {
-                                                        console.log("ERROR push into db !", err);
-                                                        nextX();
-                                                    } else {
-                                                        console.log("Insert to database successfully !!!");
-                                                        nextX();
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    } else {
-                                        console.log("Error request child", err);
-                                        nextX();
-                                    }
-                                });
-                            } else {
-                                async.each($('.list_10tinkhac .left ul li h2 a:first-child'), (value, nextRelate) => {
-                                    if (value.attribs.title != undefined) {
-                                        var relatedItemTitle = value.attribs.title;
-                                        var relatedItemLink = value.attribs.href;
-                                        var relatedItemImageLink = new Array({});
-                                        if (relatedItemLink.includes('video') || relatedItemLink.includes('photo') || relatedItemLink.includes('trac-nghiem')) {
-                                            console.log('Link contain video, can not crawled !');
-                                            nextRelate();
-                                        } else {
-                                            request(relatedItemLink, { timeout: 3000 }, (err, response, body) => {
-                                                if (err || !body) {
-                                                    nextRelate();
-                                                } else {
-                                                    let $ = cheerio.load(body);
-                                                    var relatedItemContent = $('.fck_detail p').text().split("\n\t");
-                                                    $("#left_calculator .tplCaption tbody").each(function() {
-                                                        // if (this.children[0].children[0].children[1].attribs.src != undefined && this.children[1].children[0].children[1].children[0].data != undefined) {
-                                                        //     relatedItemImageLink.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
-                                                        // }
-                                                        try {
-                                                            relatedItemImageLink.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
-                                                        } catch (err) {
-                                                            console.log(err);
-                                                        }
-                                                    });
-                                                    var relatedSubTitle = $(".short_intro").text();
-                                                    var relatedUploadedTime = $(".block_timer_share .block_timer").text();
-                                                    relatedItemContent.shift();
-                                                    relatedItemImageLink.shift();
-                                                    relatedItemArray.push({
-                                                        itemLink: relatedItemLink,
-                                                        imagesLinkList: relatedItemImageLink,
-                                                        content: relatedItemContent,
-                                                        title: relatedItemTitle,
-                                                        subTitle: relatedSubTitle,
-                                                        uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
-                                                        sourceName: 'VNEXPRESS',
-                                                        sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A'
-                                                    });
-                                                    nextRelate();
-                                                }
-                                            });
-                                        }
-                                    } else {
-                                        nextRelate();
-                                    }
-                                }, function(err) {
-                                    if (!err && relatedItemArray.length > 0) {
-                                        Item.findOne({ itemLink: itemLink, isHot: 2 }).exec(function(err, data) {
-                                            if (data) {
-                                                console.log("Already in database !!!");
-                                                nextX();
-                                            } else {
-                                                content.shift();
-                                                imagesLinkList.shift();
-                                                var newNews = {
-                                                    itemLink: itemLink,
-                                                    imagesLinkList: imagesLinkList,
-                                                    content: content,
-                                                    title: title.replace(/  /g, '').replace(/\r\n/g, ''),
-                                                    subTitle: subTitle,
-                                                    uploadedTime: uploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace(" GMT+7", '').replace(" |", ',').replace("| ", ',').replace("|", ',').replace(" , ", ", "),
-                                                    sourceName: 'VNEXPRESS',
-                                                    sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
-                                                    category: "HOMEPAGE",
-                                                    isHot: 2,
-                                                    relatedItemArray: relatedItemArray
-                                                };
-                                                Item.create(newNews, function(err, data) {
-                                                    if (err) {
-                                                        console.log("ERROR push into db !", err);
-                                                        nextX();
-                                                    } else {
-                                                        console.log("Insert to database successfully !!!");
-                                                        nextX();
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    } else {
-                                        console.log("Error request child");
-                                        nextX();
-                                    }
-                                });
-                            }
+                                    });
+                                } else {
+                                    console.log("Error request child");
+                                    nextX();
+                                }
+                            });
+
                         }
 
                     });
