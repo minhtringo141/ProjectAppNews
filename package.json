@@ -16,6 +16,7 @@
     "jsdom": "^9.12.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.9.3",
+    "mongoose-find-one-or-create": "^0.2.0",
     "moongoose": "0.0.5",
     "nodemon": "^1.11.0",
     "pug": "^2.0.0-beta11",

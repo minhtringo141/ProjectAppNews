@@ -2,8 +2,8 @@
 
 var Item = require('./item.model');
 var itemByRegion = require('./itemByRegion.model');
-
-
+var SavedItem = require('./savedItem.model');
+var ObjectId = require('mongoose').Types.ObjectId;
 module.exports = {
     findAllNews: function(req, res) {
         Item.find({ isHot: 0 }).sort('createdTime').exec(function(err, data) {
@@ -282,6 +282,36 @@ module.exports = {
                     });
                 });
             });
+        });
+    },
+    postSavedItem: function(req, res) {
+        if (req.body) {
+            SavedItem.findOne({ itemId: req.body.id }).exec(function(err, data) {
+                if (data) {
+                    res.json({ status: false, message: 'User are already exist!' })
+                } else {
+                    var myObjectId = new ObjectId(req.body.id);
+                    Item.find({ _id: myObjectId }).exec(function(err, data) {
+                        console.log(data)
+                        var newItem = {
+                            item: data,
+                            itemId: req.body.id
+                        }
+                        SavedItem.create(newItem, function(err, data) {
+                            res.json({ status: true, message: 'Success' });
+                        });
+                    });
+                }
+            });
+        }
+    },
+    getSavedItem: function(req, res) {
+        SavedItem.find().exec(function(err, data) {
+            if (data) {
+                res.json(data)
+            } else {
+                res.json(err);
+            }
         });
     }
 }
