@@ -94,5 +94,8 @@ module.exports = {
             dataHomepage.data = dataR;
             res.json(dataHomepage);
         });
+    },
+    listCategory: function(req, res) {
+
     }
 }

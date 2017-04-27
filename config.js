@@ -9,7 +9,7 @@ var config = {
         { 'name': 'THE_THAO', 'url': 'http://thethao.vnexpress.net/' },
         { 'name': 'PHAP_LUAT', 'url': 'http://vnexpress.net/tin-tuc/phap-luat' },
         { 'name': 'GIAO_DUC', 'url': 'http://vnexpress.net/tin-tuc/giao-duc' },
-        // { 'name': 'SUC_KHOE', 'url': 'http://suckhoe.vnexpress.net/' },
+        { 'name': 'SUC_KHOE', 'url': 'http://suckhoe.vnexpress.net/' },
         { 'name': 'GIA_DINH', 'url': 'http://giadinh.vnexpress.net/' },
         { 'name': 'DU_LICH', 'url': 'http://dulich.vnexpress.net/' },
         { 'name': 'KHOA_HOC', 'url': 'http://vnexpress.net/tin-tuc/khoa-hoc' },
