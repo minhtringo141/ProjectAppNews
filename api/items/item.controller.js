@@ -309,7 +309,7 @@ module.exports = {
         var dataHomepage = {
             status: 1,
             msg: "xxxx",
-            data: {}
+            data: []
         };
         SavedItem.find().exec(function(err, data) {
             if (data) {
