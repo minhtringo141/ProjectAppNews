@@ -317,7 +317,7 @@ module.exports = {
                     dataHomepage.status = 0;
                     res.json(dataHomepage);
                 } else {
-                    dataHomepage.data = data;
+                    dataHomepage.data = data.item;
                     res.json(dataHomepage);
                 }
             } else {
