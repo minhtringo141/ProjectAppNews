@@ -82,7 +82,7 @@ setInterval(() => {
                                     //     imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data });
                                     // }
                                     try {
-                                        imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data });
+                                        imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data }).replace(/\n\t\t\t\t\t/, '');
                                     } catch (err) {
                                         console.log(err);
                                     }
@@ -304,7 +304,7 @@ setInterval(() => {
                                 var content = $('.fck_detail p').text().split("\n\t");
                                 $("#left_calculator .tplCaption tbody").each(function() {
                                     try {
-                                        imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data });
+                                        imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
                                     } catch (err) {
                                         console.log(err);
                                     }
@@ -538,7 +538,7 @@ setInterval(() => {
                             var content = $('.fck_detail p').text().split("\n\t");
                             $("#left_calculator .tplCaption tbody").each(function() {
                                 try {
-                                    imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data });
+                                    imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
                                 } catch (err) {
                                     console.log(err);
                                 }
