@@ -306,9 +306,15 @@ module.exports = {
         }
     },
     getSavedItem: function(req, res) {
+        var dataHomepage = {
+            status: 1,
+            msg: "xxxx",
+            data: {}
+        };
         SavedItem.find().exec(function(err, data) {
             if (data) {
-                res.json(data)
+                dataHomepage.data = data;
+                res.json(dataHomepage)
             } else {
                 res.json({ error: "Not found" });
             }
