@@ -309,15 +309,16 @@ module.exports = {
         var dataHomepage = {
             status: 1,
             msg: "xxxx",
-            data: []
+            data: {}
         };
         SavedItem.find().exec(function(err, data) {
             if (data) {
+                console.log(data)
                 if (_.isEmpty(data)) {
                     dataHomepage.status = 0;
                     res.json(dataHomepage);
                 } else {
-                    dataHomepage.data = data.item;
+                    dataHomepage.data = data[0].item;
                     res.json(dataHomepage);
                 }
             } else {
