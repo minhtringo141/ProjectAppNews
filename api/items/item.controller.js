@@ -1,5 +1,5 @@
 'use strict';
-
+var _ = require('lodash');
 var Item = require('./item.model');
 var itemByRegion = require('./itemByRegion.model');
 var SavedItem = require('./savedItem.model');
@@ -313,8 +313,13 @@ module.exports = {
         };
         SavedItem.find().exec(function(err, data) {
             if (data) {
-                dataHomepage.data = data;
-                res.json(dataHomepage)
+                if (_.isEmpty(data)) {
+                    dataHomepage.status = 0;
+                    res.json(dataHomepage);
+                } else {
+                    dataHomepage.data = data;
+                    res.json(dataHomepage);
+                }
             } else {
                 res.json({ error: "Not found" });
             }
