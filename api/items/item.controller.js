@@ -319,7 +319,7 @@ module.exports = {
                     res.json(dataHomepage);
                 } else {
                     for (var i = 0; i < data.length; i++) {
-                        dataHomepage.data.push(data[i].item)[0];
+                        dataHomepage.data.push(data[i].item[0]);
                     }
                     res.json(dataHomepage);
                 }
