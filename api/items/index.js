@@ -13,4 +13,5 @@ router.get('/city/:name', controller.findByRegion);
 router.get('/listCategory', controller.listCategory);
 router.post('/savedItem', controller.postSavedItem);
 router.get('/savedItem', controller.getSavedItem);
+router.put('/savedItem', controller.deleteSavedItem);
 module.exports = router;
