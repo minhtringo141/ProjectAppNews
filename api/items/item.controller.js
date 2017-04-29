@@ -280,14 +280,17 @@ module.exports = {
                 } else {
                     var myObjectId = new ObjectId(req.body.id);
                     Item.find({ _id: myObjectId }).exec(function(err, data) {
-                        console.log(data)
-                        var newItem = {
-                            item: data,
-                            itemId: req.body.id
+                        if (_.isEmpty(data)) {
+                            res.json({ status: false, message: 'Error in ID' });
+                        } else {
+                            var newItem = {
+                                item: data,
+                                itemId: req.body.id
+                            }
+                            SavedItem.create(newItem, function(err, data) {
+                                res.json({ status: true, message: 'Success' });
+                            });
                         }
-                        SavedItem.create(newItem, function(err, data) {
-                            res.json({ status: true, message: 'Success' });
-                        });
                     });
                 }
             });
@@ -318,10 +321,11 @@ module.exports = {
     },
     deleteSavedItem: function(req, res) {
         SavedItem.remove({ itemId: req.body.id }).exec(function(err, data) {
-            if (err) {
-                res.json(err)
+            if (err || data.length < 1) {
+                res.json({ status: false, message: 'Not found' })
+            } else if (data) {
+                res.json({ status: true, message: 'Success' });
             }
-            res.json(data)
         });
     }
 }
