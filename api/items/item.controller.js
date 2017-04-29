@@ -398,7 +398,6 @@ module.exports = {
                     res.json(dataHomepage);
                 } else {
                     for (var i = 0; i < data.length; i++) {
-                        console.log(data[i].item)
                         dataHomepage.data.push(data[i].item);
                     }
                     res.json(dataHomepage);
