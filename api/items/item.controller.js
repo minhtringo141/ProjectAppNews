@@ -124,151 +124,139 @@ module.exports = {
                     "image": dataR[0].imagesLinkList[0],
                 }
                 dataHomepage.data.push(temp);
-                Item.find({ category: "THE_GIOI", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                Item.find({ category: "KINH_DOANH", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                     if (err) {
                         console.log('Error in get all from database', err);
                         res.send(err);
                     }
                     dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                     var temp = {
-                        "category": "THE_GIOI",
+                        "category": "KINH_DOANH",
                         "image": dataR[0].imagesLinkList[0],
                     }
                     dataHomepage.data.push(temp);
-                    Item.find({ category: "KINH_DOANH", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                    Item.find({ category: "GIAI_TRI", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                         if (err) {
                             console.log('Error in get all from database', err);
                             res.send(err);
                         }
                         dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                         var temp = {
-                            "category": "KINH_DOANH",
+                            "category": "GIAI_TRI",
                             "image": dataR[0].imagesLinkList[0],
                         }
                         dataHomepage.data.push(temp);
-                        Item.find({ category: "GIAI_TRI", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                        Item.find({ category: "THE_THAO", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                             if (err) {
                                 console.log('Error in get all from database', err);
                                 res.send(err);
                             }
                             dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                             var temp = {
-                                "category": "GIAI_TRI",
+                                "category": "THE_THAO",
                                 "image": dataR[0].imagesLinkList[0],
                             }
                             dataHomepage.data.push(temp);
-                            Item.find({ category: "THE_THAO", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                            Item.find({ category: "PHAP_LUAT", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                 if (err) {
                                     console.log('Error in get all from database', err);
                                     res.send(err);
                                 }
                                 dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                 var temp = {
-                                    "category": "THE_THAO",
+                                    "category": "PHAP_LUAT",
                                     "image": dataR[0].imagesLinkList[0],
                                 }
                                 dataHomepage.data.push(temp);
-                                Item.find({ category: "PHAP_LUAT", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                                Item.find({ category: "GIAO_DUC", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                     if (err) {
                                         console.log('Error in get all from database', err);
                                         res.send(err);
                                     }
                                     dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                     var temp = {
-                                        "category": "PHAP_LUAT",
+                                        "category": "GIAO_DUC",
                                         "image": dataR[0].imagesLinkList[0],
                                     }
                                     dataHomepage.data.push(temp);
-                                    Item.find({ category: "GIAO_DUC", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                                    Item.find({ category: "SUC_KHOE", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                         if (err) {
                                             console.log('Error in get all from database', err);
                                             res.send(err);
                                         }
                                         dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                         var temp = {
-                                            "category": "GIAO_DUC",
+                                            "category": "SUC_KHOE",
                                             "image": dataR[0].imagesLinkList[0],
                                         }
                                         dataHomepage.data.push(temp);
-                                        Item.find({ category: "SUC_KHOE", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                                        Item.find({ category: "GIA_DINH", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                             if (err) {
                                                 console.log('Error in get all from database', err);
                                                 res.send(err);
                                             }
                                             dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                             var temp = {
-                                                "category": "SUC_KHOE",
+                                                "category": "GIA_DINH",
                                                 "image": dataR[0].imagesLinkList[0],
                                             }
                                             dataHomepage.data.push(temp);
-                                            Item.find({ category: "GIA_DINH", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                                            Item.find({ category: "DU_LICH", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                                 if (err) {
                                                     console.log('Error in get all from database', err);
                                                     res.send(err);
                                                 }
                                                 dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                                 var temp = {
-                                                    "category": "GIA_DINH",
+                                                    "category": "DU_LICH",
                                                     "image": dataR[0].imagesLinkList[0],
                                                 }
                                                 dataHomepage.data.push(temp);
-                                                Item.find({ category: "DU_LICH", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                                                Item.find({ category: "KHOA_HOC", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                                     if (err) {
                                                         console.log('Error in get all from database', err);
                                                         res.send(err);
                                                     }
                                                     dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                                     var temp = {
-                                                        "category": "DU_LICH",
+                                                        "category": "KHOA_HOC",
                                                         "image": dataR[0].imagesLinkList[0],
                                                     }
                                                     dataHomepage.data.push(temp);
-                                                    Item.find({ category: "KHOA_HOC", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                                                    Item.find({ category: "SO_HOA", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                                         if (err) {
                                                             console.log('Error in get all from database', err);
                                                             res.send(err);
                                                         }
                                                         dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                                         var temp = {
-                                                            "category": "KHOA_HOC",
+                                                            "category": "SO_HOA",
                                                             "image": dataR[0].imagesLinkList[0],
                                                         }
                                                         dataHomepage.data.push(temp);
-                                                        Item.find({ category: "SO_HOA", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                                                        Item.find({ category: "CONG_DONG", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                                             if (err) {
                                                                 console.log('Error in get all from database', err);
                                                                 res.send(err);
                                                             }
                                                             dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                                             var temp = {
-                                                                "category": "SO_HOA",
+                                                                "category": "CONG_DONG",
                                                                 "image": dataR[0].imagesLinkList[0],
                                                             }
                                                             dataHomepage.data.push(temp);
-                                                            Item.find({ category: "CONG_DONG", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
+                                                            Item.find({ category: "TAM_SU", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
                                                                 if (err) {
                                                                     console.log('Error in get all from database', err);
                                                                     res.send(err);
                                                                 }
                                                                 dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
                                                                 var temp = {
-                                                                    "category": "CONG_DONG",
+                                                                    "category": "TAM_SU",
                                                                     "image": dataR[0].imagesLinkList[0],
                                                                 }
                                                                 dataHomepage.data.push(temp);
-                                                                Item.find({ category: "TAM_SU", content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(20).exec(function(err, dataR) {
-                                                                    if (err) {
-                                                                        console.log('Error in get all from database', err);
-                                                                        res.send(err);
-                                                                    }
-                                                                    dataR[0].imagesLinkList[0].image = dataR[0].imagesLinkList[0].image.replace(/_180x108/g, '');
-                                                                    var temp = {
-                                                                        "category": "TAM_SU",
-                                                                        "image": dataR[0].imagesLinkList[0],
-                                                                    }
-                                                                    dataHomepage.data.push(temp);
-                                                                    res.json(dataHomepage);
-                                                                });
+                                                                res.json(dataHomepage);
                                                             });
                                                         });
                                                     });
@@ -283,8 +271,9 @@ module.exports = {
                 });
             });
         });
-    },
-    postSavedItem: function(req, res) {
+    });
+},
+postSavedItem: function(req, res) {
         if (req.body) {
             SavedItem.findOne({ itemId: req.body.id }).exec(function(err, data) {
                 if (data) {
