@@ -271,9 +271,8 @@ module.exports = {
                 });
             });
         });
-    });
-},
-postSavedItem: function(req, res) {
+    },
+    postSavedItem: function(req, res) {
         if (req.body) {
             SavedItem.findOne({ itemId: req.body.id }).exec(function(err, data) {
                 if (data) {
