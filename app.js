@@ -158,7 +158,8 @@ setInterval(() => {
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                         category: itemCategory.name,
                                                         isHot: 0,
-                                                        relatedItemArray: relatedItemArray
+                                                        relatedItemArray: relatedItemArray,
+                                                        isReadlater: 0
                                                     };
                                                     Item.create(newNews, function(err, data) {
                                                         if (err) {
@@ -244,7 +245,8 @@ setInterval(() => {
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                         category: itemCategory.name,
                                                         isHot: 0,
-                                                        relatedItemArray: relatedItemArray
+                                                        relatedItemArray: relatedItemArray,
+                                                        isReadlater: 0
                                                     };
                                                     Item.create(newNews, function(err, data) {
                                                         if (err) {
@@ -381,7 +383,8 @@ setInterval(() => {
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                         category: itemCategory.name,
                                                         isHot: 1,
-                                                        relatedItemArray: relatedItemArray
+                                                        relatedItemArray: relatedItemArray,
+                                                        isReadlater: 0
                                                     };
                                                     Item.create(newNews, function(err, data) {
                                                         if (err) {
@@ -467,7 +470,8 @@ setInterval(() => {
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                         category: itemCategory.name,
                                                         isHot: 1,
-                                                        relatedItemArray: relatedItemArray
+                                                        relatedItemArray: relatedItemArray,
+                                                        isReadlater: 0
                                                     };
                                                     Item.create(newNews, function(err, data) {
                                                         if (err) {
@@ -613,7 +617,8 @@ setInterval(() => {
                                                 sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                 category: "HOMEPAGE",
                                                 isHot: 2,
-                                                relatedItemArray: relatedItemArray
+                                                relatedItemArray: relatedItemArray,
+                                                isReadlater: 0
                                             };
                                             Item.create(newNews, function(err, data) {
                                                 if (err) {
@@ -740,7 +745,8 @@ setInterval(() => {
                                                     category: "NEWSBYREGION",
                                                     isHot: 3,
                                                     region: itemCategory.name,
-                                                    relatedItemArray: relatedItemArray
+                                                    relatedItemArray: relatedItemArray,
+                                                    isReadlater: 0
                                                 }
                                                 ItemByRegion.create(newNews, function(err, data) {
                                                     if (err) {

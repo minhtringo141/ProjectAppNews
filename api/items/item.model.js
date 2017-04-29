@@ -65,7 +65,8 @@ var Item = new Schema({
         uploadedTime: String,
         sourceName: String,
         sourceIconLink: String
-    }]
+    }],
+    isReadlater: Number
 });
 
 module.exports = mongoose.model('Item', Item, 'item');

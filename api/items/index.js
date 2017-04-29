@@ -14,4 +14,7 @@ router.get('/listCategory', controller.listCategory);
 router.post('/savedItem', controller.postSavedItem);
 router.get('/savedItem', controller.getSavedItem);
 router.put('/savedItem', controller.deleteSavedItem);
+router.post('/favourite', controller.postFavourite);
+router.get('/favourite', controller.getFavourite);
+router.put('/favourite', controller.deleteFavourite);
 module.exports = router;
