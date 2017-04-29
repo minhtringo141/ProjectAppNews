@@ -54,11 +54,11 @@ setInterval(() => {
                 let $ = cheerio.load(body);
                 var listItemLink = $('#col_1 #news_home li .block_image_news').toArray();
                 async.eachSeries(listItemLink, (value, nextX) => {
-                    if (itemCategory.name == 'KINH_DOANH' || itemCategory.name == 'GIAI_TRI' || itemCategory.name == 'THE_THAO' || itemCategory.name == 'GIA_DINH') {
+                    if (itemCategory.name == 'KINH_DOANH' || itemCategory.name == 'GIẢI_TRÍ' || itemCategory.name == 'THỂ_THAO' || itemCategory.name == 'GIA_ĐÌNH') {
                         var itemLink = value.children[1].children[0].next.attribs.href;
                         var imagesLinkList = new Array({ image: value.children[1].children[1].children[1].attribs.src, subTitleImage: "" });
                         // console.log(itemLink);
-                    } else if (itemCategory.name == 'DU_LICH') {
+                    } else if (itemCategory.name == 'DU_LỊCH') {
                         var itemLink = value.children[1].children[0].next.attribs.href;
                         var imagesLinkList = new Array({ image: value.children[3].children[1].children[0].attribs.src, subTitleImage: "" });
                         // console.log(itemLink);
@@ -82,7 +82,7 @@ setInterval(() => {
                                     //     imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data });
                                     // }
                                     try {
-                                        imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data }).replace(/\n\t\t\t\t\t/, '');
+                                        imagesLinkList.push({ image: this.children[0].children[0].children[1].attribs.src, subTitleImage: this.children[1].children[0].children[1].children[0].data.replace(/\n\t\t\t\t\t/, '') });
                                     } catch (err) {
                                         console.log(err);
                                     }
@@ -91,7 +91,7 @@ setInterval(() => {
                                 var subTitle = $(".short_intro").text();
                                 var uploadedTime = $(".block_timer_share .block_timer").text();
                                 var relatedItemArray = new Array();
-                                if (itemCategory.name == 'THOI_SU' || itemCategory.name == 'THE_GIOI' || itemCategory.name == 'PHAP_LUAT' || itemCategory.name == 'GIAO_DUC' || itemCategory.name == 'SUC_KHOE' || itemCategory.name == 'DU_LICH' || itemCategory.name == 'KHOA_HOC' || itemCategory.name == 'SO_HOA' || itemCategory.name == 'CONG_DONG' || itemCategory.name == 'TAM_SU') {
+                                if (itemCategory.name == 'THỜI_SỰ' || itemCategory.name == 'THẾ_GIỚI' || itemCategory.name == 'PHÁP_LUẬT' || itemCategory.name == 'GIÁO_DỤC' || itemCategory.name == 'SỨC_KHOẺ' || itemCategory.name == 'DU_LỊCH' || itemCategory.name == 'KHOA_HỌC' || itemCategory.name == 'SỐ_HOÁ' || itemCategory.name == 'CỘNG_ĐỒNG' || itemCategory.name == 'TÂM_SỰ') {
                                     async.each($('.list_10tinkhac .left ul li a:first-child'), (value, nextRelate) => {
                                         if (value.attribs.href != undefined) {
                                             var relatedItemTitle = value.children[0].data;
@@ -287,7 +287,7 @@ setInterval(() => {
                 let $ = cheerio.load(body);
                 var listItemLink = $('#box_news_top .box_sub_hot_news .content_scoller ul li').toArray();
                 async.eachSeries(listItemLink, (value, nextX) => {
-                    if (itemCategory.name == 'KINH_DOANH' || itemCategory.name == 'GIAI_TRI' || itemCategory.name == 'THE_THAO' || itemCategory.name == 'GIA_DINH' || itemCategory.name == 'DU_LICH' || itemCategory.name == 'SUC_KHOE') {
+                    if (itemCategory.name == 'KINH_DOANH' || itemCategory.name == 'GIẢI_TRÍ' || itemCategory.name == 'THỂ_THAO' || itemCategory.name == 'GIA_ĐÌNH' || itemCategory.name == 'DU_LỊCH' || itemCategory.name == 'SỨC_KHOẺ') {
                         var imagesLinkList = new Array();
                         var itemLink = value.children[1].children[1].attribs.href
                     } else {
@@ -316,7 +316,7 @@ setInterval(() => {
                                 var uploadedTime = $(".block_timer_share .block_timer").text();
                                 var relatedItemArray = new Array();
 
-                                if (itemCategory.name == 'THOI_SU' || itemCategory.name == 'THE_GIOI' || itemCategory.name == 'PHAP_LUAT' || itemCategory.name == 'GIAO_DUC' || itemCategory.name == 'SUC_KHOE' || itemCategory.name == 'DU_LICH' || itemCategory.name == 'KHOA_HOC' || itemCategory.name == 'SO_HOA' || itemCategory.name == 'CONG_DONG' || itemCategory.name == 'TAM_SU') {
+                                if (itemCategory.name == 'THỜI_SỰ' || itemCategory.name == 'THẾ_GIỚI' || itemCategory.name == 'PHÁP_LUẬT' || itemCategory.name == 'GIÁO_DỤC' || itemCategory.name == 'SỨC_KHOẺ' || itemCategory.name == 'DU_LỊCH' || itemCategory.name == 'KHOA_HỌC' || itemCategory.name == 'SỐ_HOÁ' || itemCategory.name == 'CỘNG_ĐỒNG' || itemCategory.name == 'TÂM_SỰ') {
                                     async.each($('.list_10tinkhac .left ul li a:first-child'), (value, nextRelate) => {
                                         if (value.attribs.href != undefined) {
                                             var relatedItemTitle = value.children[0].data;
