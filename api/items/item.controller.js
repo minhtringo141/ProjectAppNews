@@ -391,63 +391,6 @@ module.exports = {
             msg: "xxxx",
             data: []
         };
-        var temp = [{
-                category: "THỜI_SỰ",
-                image: "http://media.phunutoday.vn/files/upload_images/2016/06/10/lich-phat-song-chung-trinhh-truyen-hinh-ngay-11-6-2016_phunutoday_vn%201.jpg"
-            },
-            {
-                category: "THẾ_GIỚI",
-                image: "https://img.clipartfest.com/540e37c249524d2a300f2c6a9b0c7e82_breaking-news-world-news-free-world-news-clipart_1300-831.jpeg"
-            },
-            {
-                category: "KINH_DOANH",
-                image: "http://study.com/cimages/course-image/praxis-ii-business-education-test_118084_large.jpg"
-            },
-            {
-                category: "GIẢI_TRÍ",
-                image: "https://s4.scoopwhoop.com/v4/category/entertainment.png"
-            },
-            {
-                category: "THỂ_THAO",
-                image: "http://www.teamworkonline.com/network/assets/imgs/mobile_bg_1.jpg"
-            },
-            {
-                category: "PHÁP_LUẬT",
-                image: "http://www.openaccesslawcanada.ca/lawpic1.jpg"
-            },
-            {
-                category: "GIÁO_DỤC",
-                image: "https://emmer.house.gov/sites/emmer.house.gov/files/styles/congress_featured_image/public/featured_image/issues/Education-OpportunitySmall.jpg"
-            },
-            {
-                category: "SỨC_KHOẺ",
-                image: "http://ormeaumedical.com.au/wp-content/uploads/2013/03/pic3.jpg"
-            },
-            {
-                category: "GIA_ĐÌNH",
-                image: "http://weknowyourdreams.com/images/family/family-07.jpg"
-            },
-            {
-                category: "DU_LỊCH",
-                image: "https://blogs-images.forbes.com/robertadams/files/2016/03/the-best-travel-websites-in-the-world-1200x800.jpg?width=960"
-            },
-            {
-                category: "KHOA_HỌC",
-                image: "http://www.scienceprofessionals.co.uk/wp-content/uploads/2016/08/life-science.jpg"
-            },
-            {
-                category: "SỐ_HOÁ",
-                image: "http://www.rhiredstaffing.com/wp-content/uploads/2014/11/ict.jpg"
-            },
-            {
-                category: "CỘNG_ĐỒNG",
-                image: "http://s7d5.scene7.com/is/image/ni/iStock_000048642816_Full_16x9?$ni-card-md$&fit=crop"
-            },
-            {
-                category: "TÂM_SỰ",
-                image: "https://s-media-cache-ak0.pinimg.com/originals/48/44/b1/4844b1ec5e4100c4106127c8f67ef7a9.jpg"
-            }
-        ]
         SavedItem.find().exec(function(err, data) {
             if (data) {
                 if (_.isEmpty(data)) {
@@ -455,11 +398,7 @@ module.exports = {
                     res.json(dataHomepage);
                 } else {
                     for (var i = 0; i < data.length; i++) {
-                        for (var j = 0; j < temp.length; j++) {
-                            if (data[i].item == temp[j].category) {
-                                dataHomepage.data.push(temp[j]);
-                            }
-                        }
+                        dataHomepage.data.push(data[i].item);
                     }
                     res.json(dataHomepage);
                 }
@@ -524,13 +463,74 @@ module.exports = {
             msg: "xxxx",
             data: []
         };
+        var temp = [{
+                category: "THỜI_SỰ",
+                image: "http://media.phunutoday.vn/files/upload_images/2016/06/10/lich-phat-song-chung-trinhh-truyen-hinh-ngay-11-6-2016_phunutoday_vn%201.jpg"
+            },
+            {
+                category: "THẾ_GIỚI",
+                image: "https://img.clipartfest.com/540e37c249524d2a300f2c6a9b0c7e82_breaking-news-world-news-free-world-news-clipart_1300-831.jpeg"
+            },
+            {
+                category: "KINH_DOANH",
+                image: "http://study.com/cimages/course-image/praxis-ii-business-education-test_118084_large.jpg"
+            },
+            {
+                category: "GIẢI_TRÍ",
+                image: "https://s4.scoopwhoop.com/v4/category/entertainment.png"
+            },
+            {
+                category: "THỂ_THAO",
+                image: "http://www.teamworkonline.com/network/assets/imgs/mobile_bg_1.jpg"
+            },
+            {
+                category: "PHÁP_LUẬT",
+                image: "http://www.openaccesslawcanada.ca/lawpic1.jpg"
+            },
+            {
+                category: "GIÁO_DỤC",
+                image: "https://emmer.house.gov/sites/emmer.house.gov/files/styles/congress_featured_image/public/featured_image/issues/Education-OpportunitySmall.jpg"
+            },
+            {
+                category: "SỨC_KHOẺ",
+                image: "http://ormeaumedical.com.au/wp-content/uploads/2013/03/pic3.jpg"
+            },
+            {
+                category: "GIA_ĐÌNH",
+                image: "http://weknowyourdreams.com/images/family/family-07.jpg"
+            },
+            {
+                category: "DU_LỊCH",
+                image: "https://blogs-images.forbes.com/robertadams/files/2016/03/the-best-travel-websites-in-the-world-1200x800.jpg?width=960"
+            },
+            {
+                category: "KHOA_HỌC",
+                image: "http://www.scienceprofessionals.co.uk/wp-content/uploads/2016/08/life-science.jpg"
+            },
+            {
+                category: "SỐ_HOÁ",
+                image: "http://www.rhiredstaffing.com/wp-content/uploads/2014/11/ict.jpg"
+            },
+            {
+                category: "CỘNG_ĐỒNG",
+                image: "http://s7d5.scene7.com/is/image/ni/iStock_000048642816_Full_16x9?$ni-card-md$&fit=crop"
+            },
+            {
+                category: "TÂM_SỰ",
+                image: "https://s-media-cache-ak0.pinimg.com/originals/48/44/b1/4844b1ec5e4100c4106127c8f67ef7a9.jpg"
+            }
+        ]
         Favourite.find().exec(function(err, data) {
             if (_.isEmpty(data)) {
                 dataHomepage.status = 0;
                 res.json(dataHomepage);
             } else {
                 for (var i = 0; i < data.length; i++) {
-                    dataHomepage.data.push(data[i].category);
+                    for (var j = 0; j < temp.length; j++) {
+                        if (data[i].category == temp[j].category) {
+                            dataHomepage.data.push(temp[j]);
+                        }
+                    }
                 }
                 res.json(dataHomepage);
             }
