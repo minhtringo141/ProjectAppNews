@@ -393,13 +393,13 @@ module.exports = {
         };
         SavedItem.find().exec(function(err, data) {
             if (data) {
-                console.log(data)
                 if (_.isEmpty(data)) {
                     dataHomepage.status = 0;
                     res.json(dataHomepage);
                 } else {
                     for (var i = 0; i < data.length; i++) {
-                        dataHomepage.data.push(data[i].item[0]);
+                        console.log(data[i].item)
+                        dataHomepage.data.push(data[i].item);
                     }
                     res.json(dataHomepage);
                 }
