@@ -9,8 +9,8 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var _ = require('lodash');
 // CONFIG DATABASE=====================================================
-// mongoose.connect('mongodb://localhost/app_news');
-mongoose.connect('mongodb://minhtringo141:minhtri@ds155130.mlab.com:55130/project_app_news');
+mongoose.connect('mongodb://localhost/app_news');
+// mongoose.connect('mongodb://minhtringo141:minhtri@ds155130.mlab.com:55130/project_app_news');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'DB connection error: '));
 db.once('open', function() {
@@ -380,7 +380,7 @@ setInterval(() => {
                                                         sourceName: 'VNEXPRESS',
                                                         sourceIconLink: 'https://lh5.ggpht.com/MZEFSBgwcY6x12AZq8buCsP3PBHDlkKm7PQDGvJr688Emz1GLbdfuQJ3RJzaJNni-A',
                                                         category: itemCategory.name,
-                                                        isHot: 0,
+                                                        isHot: 1,
                                                         relatedItemArray: relatedItemArray
                                                     };
                                                     Item.create(newNews, function(err, data) {
