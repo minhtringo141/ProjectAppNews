@@ -1,5 +1,6 @@
 'use strict';
 var _ = require('lodash');
+var async = require('async');
 var Item = require('./item.model');
 var itemByRegion = require('./itemByRegion.model');
 var SavedItem = require('./savedItem.model');
@@ -7,7 +8,7 @@ var Favourite = require('./favourite.model');
 var ObjectId = require('mongoose').Types.ObjectId;
 module.exports = {
     findAllNews: function(req, res) {
-        Item.find({ isHot: 0 }).sort('createdTime').exec(function(err, data) {
+        Item.find({ isHot: 0 }).sort('-createdTime').exec(function(err, data) {
             if (err) {
                 console.log('Error in get all from database', err);
                 res.send(err);
@@ -16,7 +17,7 @@ module.exports = {
         });
     },
     findHotNews: function(req, res) {
-        Item.find({ isHot: 1 }).sort('createdTime').exec(function(err, data) {
+        Item.find({ isHot: 1 }).sort('-createdTime').exec(function(err, data) {
             if (err) {
                 console.log('Error in get all from database', err);
                 res.send(err);
@@ -25,7 +26,7 @@ module.exports = {
         });
     },
     findHotestNews: function(req, res) {
-        Item.find({ isHot: 2 }).sort('createdTime').exec(function(err, data) {
+        Item.find({ isHot: 2 }).sort('-createdTime').exec(function(err, data) {
             if (err) {
                 console.log('Error in get all from database', err);
                 res.send(err);
@@ -543,6 +544,26 @@ module.exports = {
             } else if (data) {
                 res.json({ status: true, message: 'Success' });
             }
+        });
+    },
+    getListFavourite: function(req, res) {
+        var dataHomepage = {
+            status: 1,
+            msg: "xxxx",
+            data: []
+        };
+        Favourite.find().exec(function(err, dataR) {
+            async.each(dataR, (value, next) => {
+                Item.find({ category: value.category, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(3).exec(function(err, data) {
+                    dataHomepage.data.push({
+                        category: value.category,
+                        itemList: data
+                    })
+                    next()
+                });
+            }, function(err) {
+                res.json(dataHomepage)
+            });
         });
     }
 }

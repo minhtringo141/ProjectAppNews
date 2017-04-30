@@ -17,4 +17,5 @@ router.put('/savedItem', controller.deleteSavedItem);
 router.post('/favourite', controller.postFavourite);
 router.get('/favourite', controller.getFavourite);
 router.put('/favourite', controller.deleteFavourite);
+router.get('/detailFavourite', controller.getListFavourite);
 module.exports = router;
