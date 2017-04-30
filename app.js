@@ -54,18 +54,22 @@ setInterval(() => {
                 let $ = cheerio.load(body);
                 var listItemLink = $('#col_1 #news_home li .block_image_news').toArray();
                 async.eachSeries(listItemLink, (value, nextX) => {
-                    if (itemCategory.name == 'KINH_DOANH' || itemCategory.name == 'GIẢI_TRÍ' || itemCategory.name == 'THỂ_THAO' || itemCategory.name == 'GIA_ĐÌNH') {
-                        var itemLink = value.children[1].children[0].next.attribs.href;
-                        var imagesLinkList = new Array({ image: value.children[1].children[1].children[1].attribs.src, subTitleImage: "" });
-                        // console.log(itemLink);
-                    } else if (itemCategory.name == 'DU_LỊCH') {
-                        var itemLink = value.children[1].children[0].next.attribs.href;
-                        var imagesLinkList = new Array({ image: value.children[3].children[1].children[0].attribs.src, subTitleImage: "" });
-                        // console.log(itemLink);
-                    } else {
-                        var itemLink = value.children[1].children[0].attribs.href;
-                        var imagesLinkList = new Array({ image: value.children[3].children[0].next.children[0].attribs.src, subTitleImage: "" });
-                        // console.log(itemLink);
+                    try {
+                        if (itemCategory.name == 'KINH_DOANH' || itemCategory.name == 'GIẢI_TRÍ' || itemCategory.name == 'THỂ_THAO' || itemCategory.name == 'GIA_ĐÌNH') {
+                            var itemLink = value.children[1].children[0].next.attribs.href;
+                            var imagesLinkList = new Array({ image: value.children[1].children[1].children[1].attribs.src, subTitleImage: "" });
+                            // console.log(itemLink);
+                        } else if (itemCategory.name == 'DU_LỊCH') {
+                            var itemLink = value.children[1].children[0].next.attribs.href;
+                            var imagesLinkList = new Array({ image: value.children[3].children[1].children[0].attribs.src, subTitleImage: "" });
+                            // console.log(itemLink);
+                        } else {
+                            var itemLink = value.children[1].children[0].attribs.href;
+                            var imagesLinkList = new Array({ image: value.children[3].children[0].next.children[0].attribs.src, subTitleImage: "" });
+                            // console.log(itemLink);
+                        }
+                    } catch (err) {
+                        console.log(err);
                     }
                     if (itemLink.includes('video') || itemLink.includes('photo') || itemLink.includes('trac-nghiem')) {
                         console.log('Link contain video, can not crawled! PARENT');
