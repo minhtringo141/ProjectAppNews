@@ -1,6 +1,8 @@
 'use strict';
 var _ = require('lodash');
 var async = require('async');
+var ForecastIo = require('forecastio');
+
 var Item = require('./item.model');
 var itemByRegion = require('./itemByRegion.model');
 var SavedItem = require('./savedItem.model');
@@ -664,6 +666,16 @@ module.exports = {
             }, function(err) {
                 res.json(dataHomepage)
             });
+        });
+    },
+    weather: function(req, res) {
+        var forecastIo = new ForecastIo('8984a9dcf9d22fb45e95250c7fe0900f');
+        var options = {
+            units: 'si',
+            exclude: 'currently,hourly,flags'
+        };
+        forecastIo.forecast('21.036237', '105.790583', options).then(function(data) {
+            res.json(data)
         });
     }
 }

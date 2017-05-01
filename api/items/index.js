@@ -18,4 +18,5 @@ router.post('/favourite', controller.postFavourite);
 router.get('/favourite', controller.getFavourite);
 router.put('/favourite', controller.deleteFavourite);
 router.get('/detailFavourite', controller.getListFavourite);
+router.get('/weather', controller.weather);
 module.exports = router;
