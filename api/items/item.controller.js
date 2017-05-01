@@ -164,7 +164,7 @@ module.exports = {
                 },
                 {
                     category: "CỘNG_ĐỒNG",
-                    image: "http://s7d5.scene7.com/is/image/ni/iStock_000048642816_Full_16x9?$ni-card-md$&fit=crop",
+                    image: "http://www.demosphere.com/_uploads/58012544626dcd101f2e589d/community.jpg",
                     isAdd: 0
                 },
                 {
@@ -539,7 +539,7 @@ module.exports = {
             },
             {
                 category: "CỘNG_ĐỒNG",
-                image: "http://s7d5.scene7.com/is/image/ni/iStock_000048642816_Full_16x9?$ni-card-md$&fit=crop"
+                image: "http://www.demosphere.com/_uploads/58012544626dcd101f2e589d/community.jpg"
             },
             {
                 category: "TÂM_SỰ",
@@ -639,7 +639,7 @@ module.exports = {
             },
             {
                 category: "CỘNG_ĐỒNG",
-                image: "http://s7d5.scene7.com/is/image/ni/iStock_000048642816_Full_16x9?$ni-card-md$&fit=crop",
+                image: "http://www.demosphere.com/_uploads/58012544626dcd101f2e589d/community.jpg",
                 isAdd: 1
             },
             {
