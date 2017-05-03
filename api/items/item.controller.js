@@ -43,7 +43,8 @@ module.exports = {
             data: {
                 hotNews: [],
                 highlights: [],
-                newsByRegion: []
+                newsByRegion: [],
+                weather: {}
             }
         };
         Item.find({ isHot: 1, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
@@ -64,7 +65,15 @@ module.exports = {
                         res.send(err);
                     }
                     dataHomepage.data.newsByRegion = data;
-                    res.json(dataHomepage);
+                    var forecastIo = new ForecastIo('8984a9dcf9d22fb45e95250c7fe0900f');
+                    var options = {
+                        units: 'si',
+                        exclude: 'hourly,flags'
+                    };
+                    forecastIo.forecast('21.036237', '105.790583', options).then(function(data) {
+                        dataHomepage.data.weather = data;
+                        res.json(dataHomepage);
+                    });
                 });
             });
         });
