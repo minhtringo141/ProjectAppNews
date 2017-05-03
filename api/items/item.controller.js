@@ -672,6 +672,7 @@ module.exports = {
         var forecastIo = new ForecastIo('8984a9dcf9d22fb45e95250c7fe0900f');
         var options = {
             units: 'si',
+            exclude: 'hourly,flags'
         };
         forecastIo.forecast('21.036237', '105.790583', options).then(function(data) {
             res.json(data)
