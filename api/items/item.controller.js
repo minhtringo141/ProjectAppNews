@@ -43,9 +43,9 @@ module.exports = {
             data: {
                 hotNews: [],
                 highlights: [],
-                newsByRegion: [],
-                weather: {}
-            }
+                newsByRegion: []
+            },
+            weather: {}
         };
         Item.find({ isHot: 1, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
             if (err) {
@@ -71,7 +71,7 @@ module.exports = {
                         exclude: 'hourly,flags'
                     };
                     forecastIo.forecast('21.036237', '105.790583', options).then(function(data) {
-                        dataHomepage.data.weather = data;
+                        dataHomepage.weather = data;
                         res.json(dataHomepage);
                     });
                 });
