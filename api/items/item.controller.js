@@ -555,58 +555,72 @@ module.exports = {
         var temp = [{
                 category: "THỜI_SỰ",
                 image: "http://media.phunutoday.vn/files/upload_images/2016/06/10/lich-phat-song-chung-trinhh-truyen-hinh-ngay-11-6-2016_phunutoday_vn%201.jpg",
+                isAdd: 1
             },
             {
                 category: "THẾ_GIỚI",
-                image: "https://img.clipartfest.com/540e37c249524d2a300f2c6a9b0c7e82_breaking-news-world-news-free-world-news-clipart_1300-831.jpeg"
+                image: "https://img.clipartfest.com/540e37c249524d2a300f2c6a9b0c7e82_breaking-news-world-news-free-world-news-clipart_1300-831.jpeg",
+                isAdd: 1
             },
             {
                 category: "KINH_DOANH",
-                image: "http://study.com/cimages/course-image/praxis-ii-business-education-test_118084_large.jpg"
+                image: "http://study.com/cimages/course-image/praxis-ii-business-education-test_118084_large.jpg",
+                isAdd: 1
             },
             {
                 category: "GIẢI_TRÍ",
-                image: "https://s4.scoopwhoop.com/v4/category/entertainment.png"
+                image: "https://s4.scoopwhoop.com/v4/category/entertainment.png",
+                isAdd: 1
             },
             {
                 category: "THỂ_THAO",
-                image: "http://www.teamworkonline.com/network/assets/imgs/mobile_bg_1.jpg"
+                image: "http://www.teamworkonline.com/network/assets/imgs/mobile_bg_1.jpg",
+                isAdd: 1
             },
             {
                 category: "PHÁP_LUẬT",
-                image: "http://www.openaccesslawcanada.ca/lawpic1.jpg"
+                image: "http://www.openaccesslawcanada.ca/lawpic1.jpg",
+                isAdd: 1
             },
             {
                 category: "GIÁO_DỤC",
-                image: "https://emmer.house.gov/sites/emmer.house.gov/files/styles/congress_featured_image/public/featured_image/issues/Education-OpportunitySmall.jpg"
+                image: "https://emmer.house.gov/sites/emmer.house.gov/files/styles/congress_featured_image/public/featured_image/issues/Education-OpportunitySmall.jpg",
+                isAdd: 1
             },
             {
                 category: "SỨC_KHOẺ",
-                image: "http://ormeaumedical.com.au/wp-content/uploads/2013/03/pic3.jpg"
+                image: "http://ormeaumedical.com.au/wp-content/uploads/2013/03/pic3.jpg",
+                isAdd: 1
             },
             {
                 category: "GIA_ĐÌNH",
-                image: "http://weknowyourdreams.com/images/family/family-07.jpg"
+                image: "http://weknowyourdreams.com/images/family/family-07.jpg",
+                isAdd: 1
             },
             {
                 category: "DU_LỊCH",
-                image: "https://blogs-images.forbes.com/robertadams/files/2016/03/the-best-travel-websites-in-the-world-1200x800.jpg?width=960"
+                image: "https://blogs-images.forbes.com/robertadams/files/2016/03/the-best-travel-websites-in-the-world-1200x800.jpg?width=960",
+                isAdd: 1
             },
             {
                 category: "KHOA_HỌC",
-                image: "http://www.scienceprofessionals.co.uk/wp-content/uploads/2016/08/life-science.jpg"
+                image: "http://www.scienceprofessionals.co.uk/wp-content/uploads/2016/08/life-science.jpg",
+                isAdd: 1
             },
             {
                 category: "SỐ_HOÁ",
-                image: "http://www.rhiredstaffing.com/wp-content/uploads/2014/11/ict.jpg"
+                image: "http://www.rhiredstaffing.com/wp-content/uploads/2014/11/ict.jpg",
+                isAdd: 1
             },
             {
                 category: "CỘNG_ĐỒNG",
-                image: "http://www.demosphere.com/_uploads/58012544626dcd101f2e589d/community.jpg"
+                image: "http://www.demosphere.com/_uploads/58012544626dcd101f2e589d/community.jpg",
+                isAdd: 1
             },
             {
                 category: "TÂM_SỰ",
-                image: "https://s-media-cache-ak0.pinimg.com/originals/48/44/b1/4844b1ec5e4100c4106127c8f67ef7a9.jpg"
+                image: "https://s-media-cache-ak0.pinimg.com/originals/48/44/b1/4844b1ec5e4100c4106127c8f67ef7a9.jpg",
+                isAdd: 1
             }
         ]
         Favourite.find().exec(function(err, data) {
