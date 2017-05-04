@@ -53,34 +53,80 @@ module.exports = {
                 res.send(err);
             }
             dataHomepage.data.hotNews = data;
-            Item.find({ isHot: 2, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
+            Item.find({ isHot: 2, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, dataX) {
+
                 if (err) {
                     console.log('Error in get all from database', err);
                     res.send(err);
                 }
-                dataHomepage.data.highlights = data;
-                itemByRegion.find({ content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
-                    if (err) {
-                        console.log('Error in get all from database', err);
-                        res.send(err);
-                    }
-                    dataHomepage.data.newsByRegion = data;
-                    var forecastIo = new ForecastIo('8984a9dcf9d22fb45e95250c7fe0900f');
-                    var options = {
-                        units: 'si',
-                        exclude: 'hourly,flags'
-                    };
-                    forecastIo.forecast('21.036237', '105.790583', options).then(function(data) {
-                        delete data.currently.windBearing;
-                        async.eachSeries(data.daily.data, (value, next) => {
-                            delete value.windBearing;
-                            next();
-                        }, (err) => {
-                            dataHomepage.weather = data;
-                            res.json(dataHomepage);
+                var temppp = [];
+                Favourite.find().exec(function(err, dataR) {
+                    if (!_.isEmpty(dataR)) {
+                        async.each(dataR, (value, next) => {
+                            Item.find({ category: value.category, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(10).exec(function(err, data) {
+                                data.forEach(function(val) {
+                                    temppp.push(val);
+                                })
+                                next();
+                            });
+                        }, function(err) {
+                            var zzz = [];
+                            for (var i = 0; i < 5; i++) {
+                                var rand = Math.floor((Math.random() * temppp.length));
+                                dataHomepage.data.highlights.push(temppp[rand])
+                            }
+                            itemByRegion.find({ content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
+                                if (err) {
+                                    console.log('Error in get all from database', err);
+                                    res.send(err);
+                                }
+                                dataHomepage.data.newsByRegion = data;
+                                var forecastIo = new ForecastIo('8984a9dcf9d22fb45e95250c7fe0900f');
+                                var options = {
+                                    units: 'si',
+                                    exclude: 'hourly,flags'
+                                };
+                                forecastIo.forecast('21.036237', '105.790583', options).then(function(data) {
+                                    delete data.currently.windBearing;
+                                    async.eachSeries(data.daily.data, (value, next) => {
+                                        delete value.windBearing;
+                                        next();
+                                    }, (err) => {
+                                        dataHomepage.weather = data;
+                                        res.json(dataHomepage);
+                                    });
+                                });
+                            });
+
                         });
-                    });
+                    } else {
+                        dataHomepage.data.highlights = dataX;
+                        itemByRegion.find({ content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, data) {
+                            if (err) {
+                                console.log('Error in get all from database', err);
+                                res.send(err);
+                            }
+                            dataHomepage.data.newsByRegion = data;
+                            var forecastIo = new ForecastIo('8984a9dcf9d22fb45e95250c7fe0900f');
+                            var options = {
+                                units: 'si',
+                                exclude: 'hourly,flags'
+                            };
+                            forecastIo.forecast('21.036237', '105.790583', options).then(function(data) {
+                                delete data.currently.windBearing;
+                                async.eachSeries(data.daily.data, (value, next) => {
+                                    delete value.windBearing;
+                                    next();
+                                }, (err) => {
+                                    dataHomepage.weather = data;
+                                    res.json(dataHomepage);
+                                });
+                            });
+                        });
+                    }
+
                 });
+
             });
         });
     },
@@ -666,21 +712,26 @@ module.exports = {
             }
         ]
         Favourite.find().exec(function(err, dataR) {
-            async.each(dataR, (value, next) => {
-                Item.find({ category: value.category, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(3).exec(function(err, data) {
-                    temp.forEach(function(val) {
-                        if (value.category == val.category) {
-                            dataHomepage.data.push({
-                                category: val,
-                                itemList: data
-                            });
-                        }
-                    })
-                    next()
+            if (!_.isEmpty(dataR)) {
+                async.each(dataR, (value, next) => {
+                    Item.find({ category: value.category, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(3).exec(function(err, data) {
+                        temp.forEach(function(val) {
+                            if (value.category == val.category) {
+                                dataHomepage.data.push({
+                                    category: val,
+                                    itemList: data
+                                });
+                            }
+                        })
+                        next()
+                    });
+                }, function(err) {
+                    res.json(dataHomepage)
                 });
-            }, function(err) {
-                res.json(dataHomepage)
-            });
+            } else {
+                res.json({ status: false, message: "Empty favourite" })
+            }
+
         });
     },
     weather: function(req, res) {
