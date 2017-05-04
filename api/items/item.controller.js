@@ -71,8 +71,14 @@ module.exports = {
                         exclude: 'hourly,flags'
                     };
                     forecastIo.forecast('21.036237', '105.790583', options).then(function(data) {
-                        dataHomepage.weather = data;
-                        res.json(dataHomepage);
+                        delete data.currently.windBearing;
+                        async.eachSeries(data.daily.data, (value, next) => {
+                            delete value.windBearing;
+                            next();
+                        }, (err) => {
+                            dataHomepage.weather = data;
+                            res.json(dataHomepage);
+                        });
                     });
                 });
             });
