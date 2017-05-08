@@ -19,4 +19,6 @@ router.get('/favourite', controller.getFavourite);
 router.put('/favourite', controller.deleteFavourite);
 router.get('/detailFavourite', controller.getListFavourite);
 router.get('/weather', controller.weather);
+router.post('/signup', controller.signup);
+router.post('/login', controller.login);
 module.exports = router;

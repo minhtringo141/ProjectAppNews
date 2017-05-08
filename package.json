@@ -12,6 +12,7 @@
     "async": "^2.3.0",
     "body-parser": "^1.17.1",
     "cheerio": "^0.22.0",
+    "crypto": "0.0.3",
     "express": "^4.15.2",
     "forecastio": "^1.0.2",
     "jsdom": "^9.12.0",
