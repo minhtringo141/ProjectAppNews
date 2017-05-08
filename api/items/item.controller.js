@@ -592,7 +592,7 @@ module.exports = {
     signup: function(req, res) {
         User.findOne({ username: req.body.username }).exec(function(err, data) {
             if (!_.isEmpty(data)) {
-                res.json({ status: false, message: 'Already in database' });
+                res.json({ status: false, message: 'Already in database', id: null });
             } else {
                 var newUser = {
                     username: req.body.username,
@@ -610,7 +610,7 @@ module.exports = {
             if (!_.isEmpty(data)) {
                 res.json({ status: true, message: 'Success', user: data });
             } else {
-                res.json({ status: false, message: err });
+                res.json({ status: false, message: err, user: null });
             }
         });
     }
