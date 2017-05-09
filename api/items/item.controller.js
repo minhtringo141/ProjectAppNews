@@ -3,6 +3,7 @@ var _ = require('lodash');
 var async = require('async');
 var ForecastIo = require('forecastio');
 
+var Notify = require('./notify.model');
 var User = require('./user.model');
 var Item = require('./item.model');
 var itemByRegion = require('./itemByRegion.model');
@@ -611,6 +612,22 @@ module.exports = {
                 res.json({ status: true, message: 'Success', user: data });
             } else {
                 res.json({ status: false, message: err, user: null });
+            }
+        });
+    },
+    getNotify: function(req, res) {
+        console.log("ffdfff")
+        Notify.findOne({ key: req.body.key }).exec(function(err, data) {
+            if (!_.isEmpty(data)) {
+                res.json({ status: false, message: 'Already in database', key: null });
+            } else {
+                var newUser = {
+                    key: req.body.key
+                }
+                Notify.create(newUser, function(err, data) {
+                    res.json({ status: true, message: 'Success', key: data.key });
+                });
+
             }
         });
     }

@@ -21,4 +21,5 @@ router.get('/detailFavourite', controller.getListFavourite);
 router.get('/weather', controller.weather);
 router.post('/signup', controller.signup);
 router.post('/login', controller.login);
+router.post('/notify', controller.getNotify);
 module.exports = router;
