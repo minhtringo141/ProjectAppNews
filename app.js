@@ -10,7 +10,9 @@ var http = require('http');
 var _ = require('lodash');
 // CONFIG DATABASE=====================================================
 // mongoose.connect('mongodb://localhost/app_news');
-mongoose.connect('mongodb://minhtringo141:minhtri@ds155130.mlab.com:55130/project_app_news');
+// mongoose.connect('mongodb://minhtringo141:minhtri@ds155130.mlab.com:55130/project_app_news');
+mongoose.connect('mongodb://minhtringo141:minhtri@ds133271.mlab.com:33271/project_app_news2');
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'DB connection error: '));
 db.once('open', function() {
