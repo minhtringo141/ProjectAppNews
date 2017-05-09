@@ -56,7 +56,6 @@ module.exports = {
             }
             dataHomepage.data.hotNews = data;
             Item.find({ isHot: 2, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(5).exec(function(err, dataX) {
-
                 if (err) {
                     console.log('Error in get all from database', err);
                     res.send(err);
@@ -572,10 +571,12 @@ module.exports = {
                         next()
                     });
                 }, function(err) {
+                    dataHomepage.status = 0;
                     res.json(dataHomepage)
                 });
             } else {
-                res.json({ status: false, message: "Empty favourite" })
+                dataHomepage.status = 0;
+                res.json(dataHomepage);
             }
 
         });
