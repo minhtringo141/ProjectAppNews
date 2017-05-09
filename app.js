@@ -719,7 +719,7 @@ setInterval(() => {
                                                     subTitle: relatedSubTitle,
                                                     uploadedTime: relatedUploadedTime.replace(/  /g, '').replace(/\r\n/g, '').replace(/\t/g, '').replace("(GMT+7)", '').replace(" AM ", '').replace("ngày ", '').replace(" PM ", ''),
                                                     sourceName: '24H',
-                                                    sourceIconLink: 'http://cdn.marketplaceimages.windowsphone.com/v8/images/d2f1875a-bc7e-462f-97ed-1def619bb70b?imageType=ws_icon_medium',
+                                                    sourceIconLink: 'http://cdn.marketplaceimages.windowsphone.com/v8/images/11a55fe4-1c86-4273-ba65-794be6ab71c2',
                                                     category: "NEWSBYREGION",
                                                     isHot: 3,
                                                     region: itemCategory.name
@@ -745,7 +745,7 @@ setInterval(() => {
                                                     subTitle: subTitle,
                                                     uploadedTime: uploadedTime.replace("(GMT+7)", '').replace(" AM ", '').replace("ngày ", '').replace(" PM ", ''),
                                                     sourceName: '24H',
-                                                    sourceIconLink: 'http://cdn.marketplaceimages.windowsphone.com/v8/images/d2f1875a-bc7e-462f-97ed-1def619bb70b?imageType=ws_icon_medium',
+                                                    sourceIconLink: 'http://cdn.marketplaceimages.windowsphone.com/v8/images/11a55fe4-1c86-4273-ba65-794be6ab71c2',
                                                     category: "NEWSBYREGION",
                                                     isHot: 3,
                                                     region: itemCategory.name,
