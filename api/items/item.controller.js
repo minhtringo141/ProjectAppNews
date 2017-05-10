@@ -620,13 +620,13 @@ module.exports = {
         console.log("ffdfff")
         Notify.findOne({ key: req.body.key }).exec(function(err, data) {
             if (!_.isEmpty(data)) {
-                res.json({ status: false, message: 'Already in database', key: null });
+                res.json({ status: false, message: 'Already in database' });
             } else {
                 var newUser = {
                     key: req.body.key
                 }
                 Notify.create(newUser, function(err, data) {
-                    res.json({ status: true, message: 'Success', key: data.key });
+                    res.json({ status: true, message: 'Success' });
                 });
 
             }
