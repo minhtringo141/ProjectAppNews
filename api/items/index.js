@@ -23,5 +23,5 @@ router.post('/signup', controller.signup);
 router.post('/login', controller.login);
 router.post('/notify', controller.getNotify);
 router.get('/noti', controller.runNotify);
-router.post('/item', controller.getItem);
+router.get('/item/:id', controller.getItem);
 module.exports = router;

@@ -672,14 +672,13 @@ module.exports = {
             msg: "xxxx",
             data: []
         };
-        var myObjectId = new ObjectId(req.body.id);
+        var myObjectId = new ObjectId(req.params.id);
         Item.findOne({ _id: myObjectId }).exec(function(err, data) {
             console.log(data)
             if (_.isEmpty(data)) {
                 dataHomepage.status = 0;
                 res.json(dataHomepage);
             } else {
-                console.log(data)
                 dataHomepage.data.push(data);
                 res.json(dataHomepage);
             }
