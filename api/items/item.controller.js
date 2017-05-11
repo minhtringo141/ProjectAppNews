@@ -679,5 +679,33 @@ module.exports = {
             }
         })
 
+    },
+    search: function(req, res) {
+        var dataHomepage = {
+            status: 1,
+            msg: "xxxx",
+            data: []
+        };
+        Item.find().exec(function(err, data) {
+            console.log(data)
+            async.forEach(data, (item, next) => {
+                if (item.title.includes(req.body.word)) {
+                    dataHomepage.data.push(item);
+                    console.log(item)
+                    next();
+                } else {
+                    next();
+                }
+            }, err => {
+                if (_.isEmpty(dataHomepage.data)) {
+                    dataHomepage.status = 0;
+                    res.json(dataHomepage);
+                } else {
+                    dataHomepage.data.push(data);
+                    res.json(dataHomepage);
+                }
+            })
+
+        })
     }
 }

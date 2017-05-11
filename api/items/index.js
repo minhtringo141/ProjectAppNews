@@ -24,4 +24,5 @@ router.post('/login', controller.login);
 router.post('/notify', controller.getNotify);
 router.get('/noti', controller.runNotify);
 router.get('/item/:id', controller.getItem);
+router.post('/search', controller.search);
 module.exports = router;
