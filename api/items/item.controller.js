@@ -634,33 +634,56 @@ module.exports = {
     },
     runNotify: function(req, res) {
         Item.find({ isHot: 2, content: { $gt: [] }, imagesLinkList: { $gt: [] } }).sort('-createdTime').limit(1).exec(function(err, data) {
-            var gcm = require('node-gcm');
+            console.log(data[0]._id)
+            Notify.find().exec(function(err, dataN) {
+                var gcm = require('node-gcm');
 
-            // Set up the sender with your GCM/FCM API key (declare this once for multiple messages)
-            var sender = new gcm.Sender('AAAA9KoGNfU:APA91bHmG5U4CLayBCg_7_X8gKgrxxBh-eEe_-vCNSYhkb09WzIDBcwfHBpSaFwOlcx_CNXksPQ96d-_TN04K_T5YyTiGJu88c8OjBecWn8fjKvSQ2QdEDcXUd0SYYTTjMeWTbg0kgyu');
-            delete data[0].relatedItemArray;
-            // Prepare a message to be sent
-            var message = new gcm.Message({
-                priority: 'high',
-                data: {
-                    key1: 'message1',
-                    key2: 'message2'
-                },
-                notification: {
-                    title: "Có bài viết mới",
-                    icon: "ic_launcher",
-                    body: "data"
+                // Set up the sender with your GCM/FCM API key (declare this once for multiple messages)
+                var sender = new gcm.Sender('AAAA9KoGNfU:APA91bHmG5U4CLayBCg_7_X8gKgrxxBh-eEe_-vCNSYhkb09WzIDBcwfHBpSaFwOlcx_CNXksPQ96d-_TN04K_T5YyTiGJu88c8OjBecWn8fjKvSQ2QdEDcXUd0SYYTTjMeWTbg0kgyu');
+                var message = new gcm.Message({
+                    priority: 'high',
+                    data: {
+                        key1: 'message1',
+                        key2: 'message2'
+                    },
+                    notification: {
+                        title: "Có bài viết mới",
+                        icon: "ic_launcher",
+                        body: data[0]._id
+                    }
+                });
+
+                // Specify which registration IDs to deliver the message to
+                var regTokens = [];
+                for (var i = 0; i < dataN.length; i++) {
+                    regTokens.push(dataN[i].key)
                 }
-            });
-
-            // Specify which registration IDs to deliver the message to
-            var regTokens = ['ceej4h13StI:APA91bEupnfikBlzezz-uSqt1uq2-NeSYIQK5NIrVrmPfWgpHVT_hDWuVyOZY_vQSLsZYHZOsDF24dJkZotIQCejnSLsNa-SIbmL7lfGRaX5L_HT92Nn1xgpwUiRPyeZxi1sg0mPryfI'];
-
-            // Actually send the message
-            sender.send(message, { registrationTokens: regTokens }, function(err, response) {
-                if (err) console.error(err);
-                else res.json(response);
+                // Actually send the message
+                sender.send(message, { registrationTokens: regTokens }, function(err, response) {
+                    if (err) console.error(err);
+                    else res.json(response);
+                });
             });
         });
+    },
+    getItem: function(req, res) {
+        var dataHomepage = {
+            status: 1,
+            msg: "xxxx",
+            data: []
+        };
+        var myObjectId = new ObjectId(req.body.id);
+        Item.findOne({ _id: myObjectId }).exec(function(err, data) {
+            console.log(data)
+            if (_.isEmpty(data)) {
+                dataHomepage.status = 0;
+                res.json(dataHomepage);
+            } else {
+                console.log(data)
+                dataHomepage.data.push(data);
+                res.json(dataHomepage);
+            }
+        })
+
     }
 }
