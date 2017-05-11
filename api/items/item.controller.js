@@ -637,16 +637,11 @@ module.exports = {
             console.log(data[0]._id)
             Notify.find().exec(function(err, dataN) {
                 var gcm = require('node-gcm');
-
                 // Set up the sender with your GCM/FCM API key (declare this once for multiple messages)
                 var sender = new gcm.Sender('AAAA9KoGNfU:APA91bHmG5U4CLayBCg_7_X8gKgrxxBh-eEe_-vCNSYhkb09WzIDBcwfHBpSaFwOlcx_CNXksPQ96d-_TN04K_T5YyTiGJu88c8OjBecWn8fjKvSQ2QdEDcXUd0SYYTTjMeWTbg0kgyu');
                 var message = new gcm.Message({
                     priority: 'high',
                     data: {
-                        key1: 'message1',
-                        key2: 'message2'
-                    },
-                    notification: {
                         title: "Có bài viết mới",
                         icon: "ic_launcher",
                         body: data[0]._id
